@@ -1,0 +1,31 @@
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\ИС ПОЗМС.exe.config
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\ИС ПОЗМС.exe
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\ИС ПОЗМС.pdb
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.csprojAssemblyReference.cache
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Form1.resources
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Properties.Resources.resources
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.csproj.GenerateResource.cache
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.exe
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.pdb
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Авторизация.resources
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\MySql.Data.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\Google.Protobuf.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\Zstandard.Net.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\System.Memory.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\System.Buffers.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\MySql.Data.xml
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.exe.config
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.csproj.CopyComplete
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\EntityFramework.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\EntityFramework.xml
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Сотрудники.resources

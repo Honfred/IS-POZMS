@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище СкладModelContainer" CdmEntityContainer="СкладEntities">
+    <EntitySetMapping Name="departments">
+      <EntityTypeMapping TypeName="СкладModel.departments">
+        <MappingFragment StoreEntitySet="departments">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="materials">
+      <EntityTypeMapping TypeName="СкладModel.materials">
+        <MappingFragment StoreEntitySet="materials">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="articul" ColumnName="articul" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="min_count" ColumnName="min_count" />
+          <ScalarProperty Name="organiztation" ColumnName="organiztation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="organizations">
+      <EntityTypeMapping TypeName="СкладModel.organizations">
+        <MappingFragment StoreEntitySet="organizations">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="record">
+      <EntityTypeMapping TypeName="СкладModel.record">
+        <MappingFragment StoreEntitySet="record">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="materials" ColumnName="materials" />
+          <ScalarProperty Name="dep_to" ColumnName="dep_to" />
+          <ScalarProperty Name="date_time" ColumnName="date_time" />
+          <ScalarProperty Name="in_out_count" ColumnName="in_out_count" />
+          <ScalarProperty Name="in_out" ColumnName="in_out" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="СкладModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fio" ColumnName="fio" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

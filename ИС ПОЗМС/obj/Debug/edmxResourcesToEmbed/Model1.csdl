@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="СкладModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="departments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="code" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="record" Relationship="Self.FK_record_departments" FromRole="departments" ToRole="record" />
+    <NavigationProperty Name="users" Relationship="Self.FK_users_departments" FromRole="departments" ToRole="users" />
+  </EntityType>
+  <EntityType Name="materials">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="articul" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="count" Type="Int32" Nullable="false" />
+    <Property Name="min_count" Type="Int32" Nullable="false" />
+    <Property Name="organiztation" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="organizations" Relationship="Self.FK_materials_organizations" FromRole="materials" ToRole="organizations" />
+    <NavigationProperty Name="record" Relationship="Self.FK_record_materials" FromRole="materials" ToRole="record" />
+  </EntityType>
+  <EntityType Name="organizations">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="Int32" />
+    <NavigationProperty Name="materials" Relationship="Self.FK_materials_organizations" FromRole="organizations" ToRole="materials" />
+  </EntityType>
+  <EntityType Name="record">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="materials" Type="Int32" Nullable="false" />
+    <Property Name="dep_to" Type="Int32" Nullable="false" />
+    <Property Name="date_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="in_out_count" Type="Int32" Nullable="false" />
+    <Property Name="in_out" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="departments" Relationship="Self.FK_record_departments" FromRole="record" ToRole="departments" />
+    <NavigationProperty Name="materials1" Relationship="Self.FK_record_materials" FromRole="record" ToRole="materials" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="fio" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="department" Type="Int32" Nullable="false" />
+    <Property Name="phone" Type="Int32" />
+    <NavigationProperty Name="departments" Relationship="Self.FK_users_departments" FromRole="users" ToRole="departments" />
+  </EntityType>
+  <Association Name="FK_record_departments">
+    <End Role="departments" Type="Self.departments" Multiplicity="1" />
+    <End Role="record" Type="Self.record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="record">
+        <PropertyRef Name="dep_to" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_users_departments">
+    <End Role="departments" Type="Self.departments" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departments">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="department" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_materials_organizations">
+    <End Role="organizations" Type="Self.organizations" Multiplicity="1" />
+    <End Role="materials" Type="Self.materials" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="organizations">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="materials">
+        <PropertyRef Name="organiztation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_record_materials">
+    <End Role="materials" Type="Self.materials" Multiplicity="1" />
+    <End Role="record" Type="Self.record" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materials">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="record">
+        <PropertyRef Name="materials" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="СкладEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="departments" EntityType="Self.departments" />
+    <EntitySet Name="materials" EntityType="Self.materials" />
+    <EntitySet Name="organizations" EntityType="Self.organizations" />
+    <EntitySet Name="record" EntityType="Self.record" />
+    <EntitySet Name="users" EntityType="Self.users" />
+    <AssociationSet Name="FK_record_departments" Association="Self.FK_record_departments">
+      <End Role="departments" EntitySet="departments" />
+      <End Role="record" EntitySet="record" />
+    </AssociationSet>
+    <AssociationSet Name="FK_users_departments" Association="Self.FK_users_departments">
+      <End Role="departments" EntitySet="departments" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_materials_organizations" Association="Self.FK_materials_organizations">
+      <End Role="organizations" EntitySet="organizations" />
+      <End Role="materials" EntitySet="materials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_record_materials" Association="Self.FK_record_materials">
+      <End Role="materials" EntitySet="materials" />
+      <End Role="record" EntitySet="record" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
