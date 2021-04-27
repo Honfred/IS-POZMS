@@ -14,7 +14,7 @@ namespace ИС_ПОЗМС
 {
     public partial class Сотрудники : Form
     {
-        //const string conn = "Data Source=LAPTOP-2J26AE8V;Initial Catalog=Склад;Integrated Security=True";
+        
 
         public Сотрудники()
         {
@@ -27,13 +27,13 @@ namespace ИС_ПОЗМС
 
             DB db = new DB();
 
-            //MySqlConnection connection = new MySqlConnection(db.GetConnection);
+            //SqlConnection connection = new SqlConnection(db.GetConnection);
 
             db.openConnection();
 
-            MySqlCommand command = new MySqlCommand(Sqlreq, db.GetConnection());
+            SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
 
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
             adapter.SelectCommand = command;
             adapter.Fill(table);
@@ -48,15 +48,15 @@ namespace ИС_ПОЗМС
             if (textBox1.Text != "")
             {
                 string text = textBox1.Text;
-                //string MySqlreq = "SELECT * FROM users WHERE department = '" + text + "';";
-                string MySqlreq1 = "SELECT u.fio, d.code, u.phone FROM users AS u, departments AS d WHERE d.code = '" + text + "' AND u.department = d.id;";
+                //string Sqlreq = "SELECT * FROM users WHERE department = '" + text + "';";
+                string Sqlreq1 = "SELECT u.fio, d.code, u.phone FROM users AS u, departments AS d WHERE d.code = '" + text + "' AND u.department = d.id;";
                 DB db = new DB();
 
                 db.openConnection();
 
-                MySqlCommand command = new MySqlCommand(MySqlreq1, db.GetConnection());
+                SqlCommand command = new SqlCommand(Sqlreq1, db.GetConnection());
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                SqlDataAdapter adapter = new SqlDataAdapter();
                 DataTable table = new DataTable();
                 adapter.SelectCommand = command;
                 adapter.Fill(table);

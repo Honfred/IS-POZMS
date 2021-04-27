@@ -30,10 +30,10 @@ namespace ИС_ПОЗМС
             string MySqlreq = "SELECT * FROM `materials` where count < min_count;";
 
 
-            MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
+            //MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable table = new DataTable();
-            adapter.SelectCommand = command;
+            //adapter.SelectCommand = command;
             adapter.Fill(table);
 
             if (table.Rows.Count > 0)

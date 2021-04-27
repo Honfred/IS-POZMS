@@ -34,18 +34,18 @@ namespace ИС_ПОЗМС
 
                 db.openConnection();
 
-                MySqlCommand command = new MySqlCommand(sqlreq, db.GetConnection());
+                SqlCommand command = new SqlCommand(sqlreq, db.GetConnection());
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                SqlDataAdapter adapter = new SqlDataAdapter();
                 DataTable table = new DataTable();
                 adapter.SelectCommand = command;
                 adapter.Fill(table);
 
                 if (table.Rows.Count > 0)
                 {
-                    Form1 form1 = new Form1();
+                    Главная главная = new Главная();
                     db.closeConnection();
-                    form1.Show();
+                    главная.Show();
                     this.Hide();
                 }
                 else { MessageBox.Show("Логин и/или пароль введены не правильно"); }
