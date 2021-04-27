@@ -52,11 +52,13 @@
             this.TextLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TextLogin.Location = new System.Drawing.Point(229, 119);
+            this.TextLogin.MaxLength = 20;
             this.TextLogin.Multiline = true;
             this.TextLogin.Name = "TextLogin";
             this.TextLogin.Size = new System.Drawing.Size(324, 35);
             this.TextLogin.TabIndex = 1;
             this.TextLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TextLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextLogin_KeyPress);
             // 
             // TextPass
             // 

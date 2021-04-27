@@ -13,7 +13,7 @@ namespace ИС_ПОЗМС
 {
     public partial class Form1 : Form
     {
-        const string conn = "Data Source=LAPTOP-2J26AE8V;Initial Catalog=Склад;Integrated Security=True";
+        const string conn = "";
         int min_count;
         int count;
 
@@ -86,7 +86,7 @@ namespace ИС_ПОЗМС
             if (porog == true) { this.BackColor = System.Drawing.Color.LightGreen; }
             else { this.BackColor = System.Drawing.Color.Crimson; }*/
 
-            string sqlreq = "SELECT MAX(id) FROM users";
+            /*string sqlreq = "SELECT MAX(id) FROM users";
             
 
             SqlConnection connection = new SqlConnection(conn);
@@ -122,7 +122,7 @@ namespace ИС_ПОЗМС
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
             adapter.SelectCommand = command;
-            adapter.Fill(table);
+            adapter.Fill(table);*/
 
         }
 
