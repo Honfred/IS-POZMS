@@ -74,12 +74,6 @@
     <Compile Include="Авторизация.Designer.cs">
       <DependentUpon>Авторизация.cs</DependentUpon>
     </Compile>
-    <Compile Include="Заявки.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Заявки.Designer.cs">
-      <DependentUpon>Заявки.cs</DependentUpon>
-    </Compile>
     <Compile Include="Материалы.cs">
       <SubType>Form</SubType>
     </Compile>

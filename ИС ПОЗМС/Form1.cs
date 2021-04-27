@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ namespace ИС_ПОЗМС
 {
     public partial class Form1 : Form
     {
-        const string conn = "";
+        //const string conn = "";
         int min_count;
         int count;
 
@@ -23,106 +24,35 @@ namespace ИС_ПОЗМС
         public Form1()
         {
             InitializeComponent();
+
+            DB db = new DB();
+
+            string MySqlreq = "SELECT * FROM `materials` where count < min_count;";
+
+
+            MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            DataTable table = new DataTable();
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
+            {
+                porog = false;
+                MessageBox.Show("Одного или нескольких материалов не хватает!");
+                db.closeConnection();
+
+            }
+
+
+            //Проверка на минимальный порог для любого материала и окрашивание главного меню в нужный цвет
+            if (porog == true) { this.BackColor = System.Drawing.Color.LightGreen; }
+            else { this.BackColor = System.Drawing.Color.Crimson; }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            /*using (SqlConnection con = new SqlConnection(conn))
-            {
-                con.Open();
-                
-                using (SqlCommand q = con.CreateCommand())
-                {
-                    q.CommandText = String.Format(
-                      @"select {0}
-                       from materials
-                       where id = @prmid", "min_count");
-
-                    q.Parameters.AddWithValue("@prmid", "1");
-
-                    using (var reader = q.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            // you may want to check if value is NULL: reader.IsDBNull(0)
-                            Decimal min_value = Convert.ToDecimal(reader[0]);
-
-                            min_count = min_value;
-                        }
-                    }
-                }
-
-                using (SqlCommand q = con.CreateCommand())
-                {
-                    for (int i, i < )
-                    q.CommandText = String.Format(
-                      @"select {0}
-                       from materials
-                       where id = @prmid", "count");
-
-                    q.Parameters.AddWithValue("@prmid", "1");
-
-                    using (var reader = q.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            // you may want to check if value is NULL: reader.IsDBNull(0)
-                            Decimal value = Convert.ToDecimal(reader[0]);
-
-                            count = value;
-                        }
-                    }
-                }
-
-                con.Close();
-            }
-
-            if (count < min_count)
-            {
-                porog = false;
-            }
-
-            //Проверка на минимальный порог для любого материала и окрашивание главного меню в нужный цвет
-            if (porog == true) { this.BackColor = System.Drawing.Color.LightGreen; }
-            else { this.BackColor = System.Drawing.Color.Crimson; }*/
-
-            /*string sqlreq = "SELECT MAX(id) FROM users";
             
-
-            SqlConnection connection = new SqlConnection(conn);
-
-            connection.Open();
-
-            SqlCommand command = new SqlCommand(sqlreq, connection);
-
-            using (var reader = q.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    // you may want to check if value is NULL: reader.IsDBNull(0)
-                    Decimal value = Convert.ToDecimal(reader[0]);
-
-                    count = Convert.ToInt32(value);
-                }
-            }
-
-            int[] id = new int[count];
-
-            for (int i = 0; i < count; i++)
-            {
-                string sqlreq1 = "SELECT id = '" + i + "' FROM materials";
-
-                SqlCommand command1 = new SqlCommand(sqlreq1, connection);
-
-
-            }
-
-            connection.Close();
-
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            DataTable table = new DataTable();
-            adapter.SelectCommand = command;
-            adapter.Fill(table);*/
 
         }
 
