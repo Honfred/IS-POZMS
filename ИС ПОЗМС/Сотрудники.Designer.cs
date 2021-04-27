@@ -32,14 +32,10 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.складDataSet = new ИС_ПОЗМС.СкладDataSet();
             this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.usersTableAdapter = new ИС_ПОЗМС.СкладDataSetTableAdapters.usersTableAdapter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.usersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.departmentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.departmentsTableAdapter = new ИС_ПОЗМС.СкладDataSetTableAdapters.departmentsTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.складDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).BeginInit();
@@ -74,20 +70,6 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // складDataSet
-            // 
-            this.складDataSet.DataSetName = "СкладDataSet";
-            this.складDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "users";
-            this.usersBindingSource.DataSource = this.складDataSet;
-            // 
-            // usersTableAdapter
-            // 
-            this.usersTableAdapter.ClearBeforeFill = true;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -98,20 +80,6 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(804, 400);
             this.dataGridView1.TabIndex = 4;
-            // 
-            // usersBindingSource1
-            // 
-            this.usersBindingSource1.DataMember = "users";
-            this.usersBindingSource1.DataSource = this.складDataSet;
-            // 
-            // departmentsBindingSource
-            // 
-            this.departmentsBindingSource.DataMember = "departments";
-            this.departmentsBindingSource.DataSource = this.складDataSet;
-            // 
-            // departmentsTableAdapter
-            // 
-            this.departmentsTableAdapter.ClearBeforeFill = true;
             // 
             // Сотрудники
             // 
@@ -130,7 +98,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Сотрудники";
             this.Load += new System.EventHandler(this.Сотрудники_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.складDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource1)).EndInit();
@@ -145,12 +112,9 @@
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnSearch;
-        private СкладDataSet складDataSet;
         private System.Windows.Forms.BindingSource usersBindingSource;
-        private СкладDataSetTableAdapters.usersTableAdapter usersTableAdapter;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource usersBindingSource1;
         private System.Windows.Forms.BindingSource departmentsBindingSource;
-        private СкладDataSetTableAdapters.departmentsTableAdapter departmentsTableAdapter;
     }
 }

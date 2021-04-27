@@ -74,6 +74,12 @@
     <Compile Include="Авторизация.Designer.cs">
       <DependentUpon>Авторизация.cs</DependentUpon>
     </Compile>
+    <Compile Include="Главная.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Главная.Designer.cs">
+      <DependentUpon>Главная.cs</DependentUpon>
+    </Compile>
     <Compile Include="Материалы.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,11 +104,6 @@
     <Compile Include="Поставщики.Designer.cs">
       <DependentUpon>Поставщики.cs</DependentUpon>
     </Compile>
-    <Compile Include="СкладDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>СкладDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Сотрудники.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +125,9 @@
     <EmbeddedResource Include="Авторизация.resx">
       <DependentUpon>Авторизация.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Главная.resx">
+      <DependentUpon>Главная.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Сотрудники.resx">
       <DependentUpon>Сотрудники.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,17 +140,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="СкладDataSet.xsc">
-      <DependentUpon>СкладDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="СкладDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>СкладDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="СкладDataSet.xss">
-      <DependentUpon>СкладDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

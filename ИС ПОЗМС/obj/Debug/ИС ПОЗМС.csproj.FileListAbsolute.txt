@@ -60,3 +60,4 @@ C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\bin\Debug\MySql.Data.xml
 C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\bin\Debug\ru\EntityFramework.resources.dll
 C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.csproj.CopyComplete
 C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\bin\Debug\MySql.Data.dll
+C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Главная.resources

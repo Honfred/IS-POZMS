@@ -44,6 +44,7 @@ namespace ИС_ПОЗМС
                 if (table.Rows.Count > 0)
                 {
                     Form1 form1 = new Form1();
+                    db.closeConnection();
                     form1.Show();
                     this.Hide();
                 }
