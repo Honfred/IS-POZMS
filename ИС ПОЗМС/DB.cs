@@ -9,7 +9,7 @@ namespace ИС_ПОЗМС
 {
     class DB
     {
-        MySqlConnection connection = new MySqlConnection("server=192.168.1.41; port=; username=student;password=123;database=_storage");
+        MySqlConnection connection = new MySqlConnection("server=192.168.1.41;port=3306;username=student;password=123;database=student_storage");
 
         public void openConnection()
         {

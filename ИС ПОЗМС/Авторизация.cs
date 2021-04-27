@@ -8,21 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace ИС_ПОЗМС
 {
     public partial class Авторизация : Form
     {
-        const string conn = "Data Source=LAPTOP-2J26AE8V;Initial Catalog=Склад;Integrated Security=True";
+        //const string conn = "Data Source=LAPTOP-2J26AE8V;Initial Catalog=Склад;Integrated Security=True";
 
         public Авторизация()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -30,17 +26,17 @@ namespace ИС_ПОЗМС
 
             if (TextLogin.Text != "" && TextPass.Text != "")
             {
-                string login = TextLogin.Text;
-                string pass = TextPass.Text;
-                string sqlreq = "SELECT * FROM users WHERE id = '" + login + "' AND password = '" + pass + "';";
+                string login = TextLogin.Text.Trim();
+                string pass = TextPass.Text.Trim();
+                string sqlreq = "SELECT * FROM users WHERE fio = '" + login + "' AND password = '" + pass + "';";
 
-                SqlConnection connection = new SqlConnection(conn);
+                DB db = new DB();
 
-                connection.Open();
+                db.openConnection();
 
-                SqlCommand command = new SqlCommand(sqlreq, connection);
+                MySqlCommand command = new MySqlCommand(sqlreq, db.GetConnection());
 
-                SqlDataAdapter adapter = new SqlDataAdapter();
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
                 DataTable table = new DataTable();
                 adapter.SelectCommand = command;
                 adapter.Fill(table);
@@ -48,7 +44,7 @@ namespace ИС_ПОЗМС
                 if (table.Rows.Count > 0)
                 {
                     Form1 form1 = new Form1();
-                    connection.Close();
+                    db.closeConnection();
                     form1.Show();
                     this.Hide();
                 }
@@ -59,11 +55,7 @@ namespace ИС_ПОЗМС
 
         private void TextLogin_KeyPress(object sender, KeyPressEventArgs e)
         {
-            char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
-                e.Handled = true;
             
-
         }
     }
 }

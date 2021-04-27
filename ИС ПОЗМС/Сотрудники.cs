@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ namespace ИС_ПОЗМС
 {
     public partial class Сотрудники : Form
     {
-        const string conn = "Data Source=LAPTOP-2J26AE8V;Initial Catalog=Склад;Integrated Security=True";
+        //const string conn = "Data Source=LAPTOP-2J26AE8V;Initial Catalog=Склад;Integrated Security=True";
 
         public Сотрудники()
         {
@@ -22,22 +23,24 @@ namespace ИС_ПОЗМС
 
         private void Сотрудники_Load(object sender, EventArgs e)
         {
-            string sqlreq = "SELECT u.fio, d.code, u.phone FROM users AS u, departments AS d WHERE u.department = d.id;";
+            string Sqlreq = "SELECT u.fio, d.code, u.phone FROM users AS u, departments AS d WHERE u.department = d.id;";
 
-            SqlConnection connection = new SqlConnection(conn);
+            DB db = new DB();
 
-            connection.Open();
+            //MySqlConnection connection = new MySqlConnection(db.GetConnection);
 
-            SqlCommand command = new SqlCommand(sqlreq, connection);
+            db.openConnection();
 
-            SqlDataAdapter adapter = new SqlDataAdapter();
+            MySqlCommand command = new MySqlCommand(Sqlreq, db.GetConnection());
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
             DataTable table = new DataTable();
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
             dataGridView1.DataSource = table;
 
-            connection.Close();
+            db.closeConnection();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -45,16 +48,15 @@ namespace ИС_ПОЗМС
             if (textBox1.Text != "")
             {
                 string text = textBox1.Text;
-                //string sqlreq = "SELECT * FROM users WHERE department = '" + text + "';";
-                string sqlreq1 = "SELECT u.fio, d.code, u.phone FROM users AS u, departments AS d WHERE d.code = '" + text + "' AND u.department = d.id;";
+                //string MySqlreq = "SELECT * FROM users WHERE department = '" + text + "';";
+                string MySqlreq1 = "SELECT u.fio, d.code, u.phone FROM users AS u, departments AS d WHERE d.code = '" + text + "' AND u.department = d.id;";
+                DB db = new DB();
 
-                SqlConnection connection = new SqlConnection(conn);
+                db.openConnection();
 
-                connection.Open();
+                MySqlCommand command = new MySqlCommand(MySqlreq1, db.GetConnection());
 
-                SqlCommand command = new SqlCommand(sqlreq1, connection);
-
-                SqlDataAdapter adapter = new SqlDataAdapter();
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
                 DataTable table = new DataTable();
                 adapter.SelectCommand = command;
                 adapter.Fill(table);
@@ -66,7 +68,7 @@ namespace ИС_ПОЗМС
                 else { MessageBox.Show("Такого подразделения не существует или в нем никто не работает"); }
 
 
-                connection.Close();
+                db.closeConnection();
             }
         }
 
