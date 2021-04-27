@@ -21,6 +21,9 @@ namespace ИС_ПОЗМС
 
         private void Главная_Load(object sender, EventArgs e)
         {
+            //Материалы
+
+
             DB db = new DB();
 
             bool min_value = false;
@@ -62,7 +65,12 @@ namespace ИС_ПОЗМС
             dataGridView1.Columns[2].HeaderText = "Количество";
             dataGridView1.Columns[3].HeaderText = "Мин.количество";
             dataGridView1.Columns[4].HeaderText = "Название организации";
+            /////////////////////////////////////////////////////////////////////////////////////////////////
+            ///
 
+
+            //Поставщики
+            
 
         }
 
