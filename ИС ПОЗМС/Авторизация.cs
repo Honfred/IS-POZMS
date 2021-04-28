@@ -14,7 +14,6 @@ namespace ИС_ПОЗМС
 {
     public partial class Авторизация : Form
     {
-        //const string conn = "Data Source=LAPTOP-2J26AE8V;Initial Catalog=Склад;Integrated Security=True";
 
         public Авторизация()
         {
@@ -35,9 +34,9 @@ namespace ИС_ПОЗМС
                 db.openConnection();
 
                 SqlCommand command = new SqlCommand(sqlreq, db.GetConnection());
-
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 DataTable table = new DataTable();
+
                 adapter.SelectCommand = command;
                 adapter.Fill(table);
 
@@ -49,7 +48,6 @@ namespace ИС_ПОЗМС
                     this.Hide();
                 }
                 else { MessageBox.Show("Логин и/или пароль введены не правильно"); }
-                               
             }
         }
 
