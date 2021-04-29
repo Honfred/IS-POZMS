@@ -34,13 +34,8 @@ namespace ИС_ПОЗМС
                 db.openConnection();
 
                 SqlCommand command = new SqlCommand(sqlreq, db.GetConnection());
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                DataTable table = new DataTable();
 
-                adapter.SelectCommand = command;
-                adapter.Fill(table);
-
-                if (table.Rows.Count > 0)
+                if (command.ToString() != "")
                 {
                     Главная главная = new Главная();
                     db.closeConnection();
