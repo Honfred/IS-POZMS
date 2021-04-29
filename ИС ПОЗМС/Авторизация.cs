@@ -22,20 +22,24 @@ namespace ИС_ПОЗМС
 
         private void button1_Click(object sender, EventArgs e)
         {
+            DB db = new DB();
 
             if (TextLogin.Text != "" && TextPass.Text != "")
             {
                 string login = TextLogin.Text.Trim();
                 string pass = TextPass.Text.Trim();
-                string sqlreq = "SELECT * FROM users WHERE fio = '" + login + "' AND password = '" + pass + "';";
-
-                DB db = new DB();
+                string Sqlreq = "SELECT Id_users FROM Users WHERE fio = '" + login + "' AND password = md5('" + pass + "') LIMIT 1;";
 
                 db.openConnection();
 
-                SqlCommand command = new SqlCommand(sqlreq, db.GetConnection());
+                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
+                int id = 0;
 
-                if (command.ToString() != "")
+                id = Convert.ToInt32(command.ExecuteScalar());
+
+
+
+                if (id != 0)
                 {
                     Главная главная = new Главная();
                     db.closeConnection();
