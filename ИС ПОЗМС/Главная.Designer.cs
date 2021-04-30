@@ -30,17 +30,20 @@ namespace ИС_ПОЗМС
         private void InitializeComponent()
         {
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnExit1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnExit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnExit2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnAddRecord = new System.Windows.Forms.Button();
@@ -48,12 +51,9 @@ namespace ИС_ПОЗМС
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnExit3 = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnExit1 = new System.Windows.Forms.Button();
-            this.btnExit2 = new System.Windows.Forms.Button();
-            this.btnExit3 = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -74,17 +74,27 @@ namespace ИС_ПОЗМС
             this.tabPage2.Controls.Add(this.textBox2);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(1059, 661);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Поставщики";
             // 
+            // btnExit1
+            // 
+            this.btnExit1.Location = new System.Drawing.Point(844, 624);
+            this.btnExit1.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExit1.Name = "btnExit1";
+            this.btnExit1.Size = new System.Drawing.Size(205, 28);
+            this.btnExit1.TabIndex = 8;
+            this.btnExit1.Text = "Выход";
+            this.btnExit1.UseVisualStyleBackColor = true;
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(844, 588);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(205, 28);
             this.button2.TabIndex = 7;
@@ -105,7 +115,7 @@ namespace ИС_ПОЗМС
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(843, 43);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(201, 22);
             this.textBox2.TabIndex = 5;
@@ -120,7 +130,7 @@ namespace ИС_ПОЗМС
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridView2.Location = new System.Drawing.Point(4, 4);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(830, 653);
@@ -135,12 +145,23 @@ namespace ИС_ПОЗМС
             this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(1059, 661);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Материалы";
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(845, 625);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(200, 28);
+            this.btnExit.TabIndex = 5;
+            this.btnExit.Text = "Выход";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Visible = false;
             // 
             // label1
             // 
@@ -155,7 +176,7 @@ namespace ИС_ПОЗМС
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(845, 589);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(200, 28);
             this.button1.TabIndex = 3;
@@ -167,7 +188,7 @@ namespace ИС_ПОЗМС
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(845, 42);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(201, 22);
             this.textBox1.TabIndex = 2;
@@ -182,7 +203,7 @@ namespace ИС_ПОЗМС
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridView1.Location = new System.Drawing.Point(4, 4);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(834, 653);
@@ -197,10 +218,12 @@ namespace ИС_ПОЗМС
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1067, 690);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage3
@@ -214,11 +237,21 @@ namespace ИС_ПОЗМС
             this.tabPage3.Controls.Add(this.textBox3);
             this.tabPage3.Controls.Add(this.dataGridView3);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1059, 661);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Записи";
+            // 
+            // btnExit2
+            // 
+            this.btnExit2.Location = new System.Drawing.Point(844, 624);
+            this.btnExit2.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExit2.Name = "btnExit2";
+            this.btnExit2.Size = new System.Drawing.Size(205, 28);
+            this.btnExit2.TabIndex = 12;
+            this.btnExit2.Text = "Выход";
+            this.btnExit2.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -239,7 +272,7 @@ namespace ИС_ПОЗМС
             "Пришло",
             "Ушло"});
             this.comboBox1.Location = new System.Drawing.Point(845, 112);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.MaxDropDownItems = 2;
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(201, 24);
@@ -249,7 +282,7 @@ namespace ИС_ПОЗМС
             // btnAddRecord
             // 
             this.btnAddRecord.Location = new System.Drawing.Point(845, 588);
-            this.btnAddRecord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddRecord.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddRecord.Name = "btnAddRecord";
             this.btnAddRecord.Size = new System.Drawing.Size(203, 28);
             this.btnAddRecord.TabIndex = 9;
@@ -271,7 +304,7 @@ namespace ИС_ПОЗМС
             // 
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox3.Location = new System.Drawing.Point(844, 42);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.MaxLength = 12;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(201, 22);
@@ -287,7 +320,7 @@ namespace ИС_ПОЗМС
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridView3.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.Size = new System.Drawing.Size(835, 661);
@@ -299,65 +332,11 @@ namespace ИС_ПОЗМС
             this.tabPage4.Controls.Add(this.btnExit3);
             this.tabPage4.Controls.Add(this.dataGridView4);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(1059, 661);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Подразделения";
-            // 
-            // dataGridView4
-            // 
-            this.dataGridView4.AllowUserToAddRows = false;
-            this.dataGridView4.AllowUserToDeleteRows = false;
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dataGridView4.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.ReadOnly = true;
-            this.dataGridView4.Size = new System.Drawing.Size(835, 661);
-            this.dataGridView4.TabIndex = 0;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage5.Location = new System.Drawing.Point(4, 25);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1059, 661);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Сотрудники";
-            // 
-            // btnExit
-            // 
-            this.btnExit.Location = new System.Drawing.Point(845, 625);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(200, 28);
-            this.btnExit.TabIndex = 5;
-            this.btnExit.Text = "Выход";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Visible = false;
-            // 
-            // btnExit1
-            // 
-            this.btnExit1.Location = new System.Drawing.Point(844, 624);
-            this.btnExit1.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExit1.Name = "btnExit1";
-            this.btnExit1.Size = new System.Drawing.Size(205, 28);
-            this.btnExit1.TabIndex = 8;
-            this.btnExit1.Text = "Выход";
-            this.btnExit1.UseVisualStyleBackColor = true;
-            // 
-            // btnExit2
-            // 
-            this.btnExit2.Location = new System.Drawing.Point(844, 624);
-            this.btnExit2.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExit2.Name = "btnExit2";
-            this.btnExit2.Size = new System.Drawing.Size(205, 28);
-            this.btnExit2.TabIndex = 12;
-            this.btnExit2.Text = "Выход";
-            this.btnExit2.UseVisualStyleBackColor = true;
             // 
             // btnExit3
             // 
@@ -369,6 +348,29 @@ namespace ИС_ПОЗМС
             this.btnExit3.Text = "Выход";
             this.btnExit3.UseVisualStyleBackColor = true;
             // 
+            // dataGridView4
+            // 
+            this.dataGridView4.AllowUserToAddRows = false;
+            this.dataGridView4.AllowUserToDeleteRows = false;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dataGridView4.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView4.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.ReadOnly = true;
+            this.dataGridView4.Size = new System.Drawing.Size(835, 661);
+            this.dataGridView4.TabIndex = 0;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(1059, 661);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Сотрудники";
+            // 
             // Главная
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -378,7 +380,7 @@ namespace ИС_ПОЗМС
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Главная";
             this.ShowIcon = false;

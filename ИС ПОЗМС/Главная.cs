@@ -14,7 +14,7 @@ namespace ИС_ПОЗМС
 {
     public partial class Главная : Form
     {
-        MySqlDataAdapter adapter = new MySqlDataAdapter();
+        SqlDataAdapter adapter = new SqlDataAdapter();
         DataTable table = new DataTable();
         DB db = new DB();
 
@@ -39,11 +39,11 @@ namespace ИС_ПОЗМС
 
         public void Materials()
         {
-            string MySqlreq = "SELECT m.articul, m.name, m.count, m.min_count, o.name FROM materials AS m, organizations AS o WHERE m.organization = o.id;";
+            string Sqlreq = "SELECT m.articul, m.name, m.count, m.min_count, o.name FROM materials AS m, organizations AS o WHERE m.organization = o.id;";
 
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
-            MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
+            SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
             adapter.SelectCommand = command;
             adapter.Fill(table);
 
@@ -58,8 +58,8 @@ namespace ИС_ПОЗМС
 
         private void Min_materials()
         {
-            string MySqlreq = "SELECT * FROM materials where count < min_count;";
-            MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
+            string Sqlreq = "SELECT * FROM materials where count < min_count;";
+            SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
             DataTable table = new DataTable();
 
             adapter.SelectCommand = command;
@@ -75,10 +75,10 @@ namespace ИС_ПОЗМС
         public void Organizations()
         {
 
-            string MySqlreq = "SELECT name, phone FROM organizations WHERE name like '%" + textBox2.Text + "%';";
+            string Sqlreq = "SELECT name, phone FROM organizations WHERE name like '%" + textBox2.Text + "%';";
 
-            MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
             adapter.SelectCommand = command;
             adapter.Fill(table);
@@ -91,8 +91,8 @@ namespace ИС_ПОЗМС
 
         private void Departments()
         {
-            string MySqlreq = "SELECT code, name, phone FROM departments";
-            MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
+            string Sqlreq = "SELECT code, name, phone FROM departments";
+            SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
             DataTable table = new DataTable();
             adapter.SelectCommand = command;
             adapter.Fill(table);
@@ -109,11 +109,11 @@ namespace ИС_ПОЗМС
         {
             if (textBox1.Text != "")
             {
-                string MySqlreq = "SELECT u.fio, d.code, u.phone FROM users AS u, departments AS d WHERE d.code = '" + textBox1.Text + "' AND u.department = d.id;";
+                string Sqlreq = "SELECT u.fio, d.code, u.phone FROM users AS u, departments AS d WHERE d.code = '" + textBox1.Text + "' AND u.department = d.id;";
 
-                MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
+                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
 
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                SqlDataAdapter adapter = new SqlDataAdapter();
                 DataTable table = new DataTable();
                 adapter.SelectCommand = command;
                 adapter.Fill(table);
@@ -127,10 +127,10 @@ namespace ИС_ПОЗМС
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string MySqlreq = "SELECT m.articul, m.name, m.count, m.min_count, o.name FROM materials AS m, organizations AS o WHERE m.organization = o.id and count < min_count;";
+            string Sqlreq = "SELECT m.articul, m.name, m.count, m.min_count, o.name FROM materials AS m, organizations AS o WHERE m.organization = o.id and count < min_count;";
 
-            MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
             adapter.SelectCommand = command;
             adapter.Fill(table);
@@ -140,10 +140,10 @@ namespace ИС_ПОЗМС
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string MySqlreq = "SELECT m.articul, m.name, m.count, m.min_count, o.name FROM materials AS m, organizations AS o WHERE m.organization = o.id and m.name like '%" + textBox1.Text + "%';";
+            string Sqlreq = "SELECT m.articul, m.name, m.count, m.min_count, o.name FROM materials AS m, organizations AS o WHERE m.organization = o.id and m.name like '%" + textBox1.Text + "%';";
 
-            MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
             adapter.SelectCommand = command;
             adapter.Fill(table);
@@ -160,11 +160,11 @@ namespace ИС_ПОЗМС
         {
             if (comboBox1.Text == "Пришло")
             {
-                string MySqlreq = "SELECT r.id, m.name, o.name, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, organizations AS o WHERE r.materials = m.id AND r.org_in = o.id AND m.name LIKE '%" + textBox3.Text + "%';";
+                string Sqlreq = "SELECT r.id, m.name, o.name, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, organizations AS o WHERE r.materials = m.id AND r.org_in = o.id AND m.name LIKE '%" + textBox3.Text + "%';";
 
-                MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
+                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
                 DataTable table = new DataTable();
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                SqlDataAdapter adapter = new SqlDataAdapter();
 
                 adapter.SelectCommand = command;
                 adapter.Fill(table);
@@ -181,12 +181,12 @@ namespace ИС_ПОЗМС
 
             if (comboBox1.Text == "Ушло")
             {
-                string MySqlreq = "SELECT r.id, m.name, d.code, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, departments AS d WHERE r.materials = m.id AND r.dep_to = d.id AND m.name LIKE '%" + textBox3.Text + "%';";
+                string Sqlreq = "SELECT r.id, m.name, d.code, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, departments AS d WHERE r.materials = m.id AND r.dep_to = d.id AND m.name LIKE '%" + textBox3.Text + "%';";
 
-                MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
+                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
                 
                 DataTable table = new DataTable();
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = command;
                 adapter.Fill(table);
                 dataGridView3.DataSource = table;
@@ -203,13 +203,13 @@ namespace ИС_ПОЗМС
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
+            SqlDataAdapter adapter = new SqlDataAdapter();
 
             if (comboBox1.Text == "Пришло")
             {
-                string MySqlreq3 = "SELECT r.id, m.name, o.name, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, organizations AS o WHERE r.materials = m.id AND r.org_in = o.id;";
+                string Sqlreq3 = "SELECT r.id, m.name, o.name, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, organizations AS o WHERE r.materials = m.id AND r.org_in = o.id;";
 
-                MySqlCommand command = new MySqlCommand(MySqlreq3, db.GetConnection());
+                SqlCommand command = new SqlCommand(Sqlreq3, db.GetConnection());
 
                 adapter.SelectCommand = command;
                 adapter.Fill(table);
@@ -225,9 +225,9 @@ namespace ИС_ПОЗМС
 
             if (comboBox1.Text == "Ушло")
             {
-                string MySqlreq3 = "SELECT r.id, m.name, d.code, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, departments AS d WHERE r.materials = m.id AND r.dep_to = d.id;";
+                string Sqlreq3 = "SELECT r.id, m.name, d.code, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, departments AS d WHERE r.materials = m.id AND r.dep_to = d.id;";
 
-                MySqlCommand command = new MySqlCommand(MySqlreq3, db.GetConnection());
+                SqlCommand command = new SqlCommand(Sqlreq3, db.GetConnection());
                 
                 adapter.SelectCommand = command;
                 adapter.Fill(table);

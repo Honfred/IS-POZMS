@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace ИС_ПОЗМС
             db.openConnection();
 
             string MySqlreq = "INSERT INTO organizations (name, phone) VALUES ('" + textBox1.Text + "', '" + textBox2.Text + "');";
-            MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
+            SqlCommand command = new SqlCommand(MySqlreq, db.GetConnection());
             command.ExecuteNonQuery();
             
             главная.Organizations();

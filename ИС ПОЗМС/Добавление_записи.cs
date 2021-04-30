@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace ИС_ПОЗМС
     public partial class Добавление_записи : Form
     {
         DataTable table = new DataTable();
-        MySqlDataAdapter adapter = new MySqlDataAdapter();
+        SqlDataAdapter adapter = new SqlDataAdapter();
         DB db = new DB();
 
 
@@ -31,10 +32,10 @@ namespace ИС_ПОЗМС
 
         private void Materials()
         {
-            string MySqlreq = "SELECT name from materials";
+            string Sqlreq = "SELECT name from materials";
 
-            MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
-            MySqlDataReader reader = command.ExecuteReader();
+            SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
+            SqlDataReader reader = command.ExecuteReader();
 
             while (reader.Read())
             {
@@ -47,9 +48,9 @@ namespace ИС_ПОЗМС
         {
             if (comboBox1.Text == "Пришло")
             {
-                string Sqlreq = "insert into records (materials, org_in, date_time, in_out_count, in_out) values ((SELECT id FROM materials where name = '" + comboBox2.Text + "'), (SELECT id FROM organizations where name = '" + comboBox3.Text + "'), now(), 25, 'Пришло')";
+                string Sqlreq = "insert into records (materials, org_in, date_time, in_out_count, in_out) values ((SELECT id FROM materials where name = '" + comboBox2.Text + "'), (SELECT id FROM organizations where name = '" + comboBox3.Text + "'), GETDATE(), 25, 'Пришло')";
                 
-                MySqlCommand command = new MySqlCommand(Sqlreq, db.GetConnection());
+                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
                 command.ExecuteNonQuery();
 
                 this.Hide();
@@ -59,9 +60,9 @@ namespace ИС_ПОЗМС
 
             if (comboBox1.Text == "Ушло")
             {
-                string Sqlreq = "insert into records (materials, dep_to, date_time, in_out_count, in_out) values ((SELECT id FROM materials where name = '" + comboBox2.Text + "'), (SELECT id FROM departments where name = '" + comboBox3.Text + "'), now(), 25, 'Ушло')";
+                string Sqlreq = "insert into records (materials, dep_to, date_time, in_out_count, in_out) values ((SELECT id FROM materials where name = '" + comboBox2.Text + "'), (SELECT id FROM departments where name = '" + comboBox3.Text + "'), GETDATE(), 25, 'Ушло')";
                 
-                MySqlCommand command = new MySqlCommand(Sqlreq, db.GetConnection());
+                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
                 command.ExecuteNonQuery();
 
                 this.Hide();
@@ -76,10 +77,10 @@ namespace ИС_ПОЗМС
             {
                 comboBox3.Items.Clear();
 
-                string MySqlreq = "SELECT name FROM organizations";
+                string Sqlreq = "SELECT name FROM organizations";
 
-                MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
-                MySqlDataReader reader = command.ExecuteReader();
+                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
+                SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
@@ -91,10 +92,10 @@ namespace ИС_ПОЗМС
             if (comboBox1.Text == "Ушло")
             {
                 comboBox3.Items.Clear();
-                string MySqlreq = "SELECT name FROM departments";
+                string Sqlreq = "SELECT name FROM departments";
 
-                MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
-                MySqlDataReader reader = command.ExecuteReader();
+                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
+                SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
