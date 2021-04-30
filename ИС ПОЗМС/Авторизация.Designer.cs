@@ -49,6 +49,9 @@
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(129, 216);
             this.button1.Name = "button1";
@@ -63,10 +66,9 @@
             this.TextPass.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TextPass.Location = new System.Drawing.Point(58, 149);
-            this.TextPass.Multiline = true;
             this.TextPass.Name = "TextPass";
             this.TextPass.PasswordChar = '*';
-            this.TextPass.Size = new System.Drawing.Size(324, 35);
+            this.TextPass.Size = new System.Drawing.Size(324, 29);
             this.TextPass.TabIndex = 12;
             this.TextPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -76,9 +78,8 @@
             this.TextLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TextLogin.Location = new System.Drawing.Point(58, 83);
             this.TextLogin.MaxLength = 20;
-            this.TextLogin.Multiline = true;
             this.TextLogin.Name = "TextLogin";
-            this.TextLogin.Size = new System.Drawing.Size(324, 35);
+            this.TextLogin.Size = new System.Drawing.Size(324, 29);
             this.TextLogin.TabIndex = 11;
             this.TextLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.TextLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextLogin_KeyPress);
@@ -100,6 +101,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(440, 323);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
