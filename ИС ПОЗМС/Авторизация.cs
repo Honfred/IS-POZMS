@@ -28,11 +28,11 @@ namespace ИС_ПОЗМС
             {
                 string login = TextLogin.Text.Trim();
                 string pass = TextPass.Text.Trim();
-                string Sqlreq = "SELECT Id_users FROM Users WHERE fio = '" + login + "' AND password = md5('" + pass + "') LIMIT 1;";
+                string MySqlreq = "SELECT Id_users FROM Users WHERE fio = '" + login + "' AND password = md5('" + pass + "') LIMIT 1;";
 
                 db.openConnection();
 
-                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
+                MySqlCommand command = new MySqlCommand(MySqlreq, db.GetConnection());
                 int id = 0;
 
                 id = Convert.ToInt32(command.ExecuteScalar());

@@ -30,10 +30,8 @@ C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\EntityFramew
 C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\bin\Debug\ru\EntityFramework.resources.dll
 C:\Users\Sin\source\repos\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Сотрудники.resources
 C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.csprojAssemblyReference.cache
-C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Form1.resources
 C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Properties.Resources.resources
 C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Авторизация.resources
-C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Сотрудники.resources
 C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.csproj.GenerateResource.cache
 C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.csproj.CoreCompileInputs.cache
 C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.exe
@@ -93,3 +91,4 @@ C:\Users\Sin\Documents\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.csproj
 C:\Users\Sin\Documents\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.csproj.CopyComplete
 C:\Users\Sin\Documents\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.exe
 C:\Users\Sin\Documents\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.pdb
+C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Добавление_поставщиков.resources

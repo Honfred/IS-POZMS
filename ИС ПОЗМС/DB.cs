@@ -1,11 +1,12 @@
 ﻿using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace ИС_ПОЗМС
 {
     class DB
     {
-        //MySqlConnection connection = new MySqlConnection("server=192.168.1.41;port=3306;username=student;password=123;database=student_storage"); //PHP MY Admin
-        SqlConnection connection = new SqlConnection("Data Source=LAPTOP-2J26AE8V; Initial Catalog=Склад; Integrated Security=True"); //MS SQL Server
+        MySqlConnection connection = new MySqlConnection("server=192.168.1.41;port=3306;username=student;password=123;database=student_storage"); //PHP MY Admin
+        //SqlConnection connection = new SqlConnection("Data Source=LAPTOP-2J26AE8V; Initial Catalog=Склад; Integrated Security=True"); //MS SQL Server
         public void openConnection()
         {
             if (connection.State == System.Data.ConnectionState.Closed)
@@ -18,7 +19,7 @@ namespace ИС_ПОЗМС
                 connection.Close();
         }
 
-        public SqlConnection GetConnection()
+        public MySqlConnection GetConnection()
         {
             return connection;
         }
