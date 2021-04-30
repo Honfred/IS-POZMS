@@ -92,3 +92,4 @@ C:\Users\Sin\Documents\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.csproj
 C:\Users\Sin\Documents\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.exe
 C:\Users\Sin\Documents\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.pdb
 C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Добавление_поставщиков.resources
+C:\Users\student\Desktop\IS-POZMS\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Добавление_записи.resources

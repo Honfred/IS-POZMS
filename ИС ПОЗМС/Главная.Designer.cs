@@ -255,6 +255,7 @@ namespace ИС_ПОЗМС
             this.btnAddRecord.TabIndex = 9;
             this.btnAddRecord.Text = "Добавить запись";
             this.btnAddRecord.UseVisualStyleBackColor = true;
+            this.btnAddRecord.Click += new System.EventHandler(this.btnAddRecord_Click);
             // 
             // label3
             // 

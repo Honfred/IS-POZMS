@@ -228,7 +228,7 @@ namespace ИС_ПОЗМС
                 string MySqlreq3 = "SELECT r.id, m.name, d.code, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, departments AS d WHERE r.materials = m.id AND r.dep_to = d.id;";
 
                 MySqlCommand command = new MySqlCommand(MySqlreq3, db.GetConnection());
-
+                
                 adapter.SelectCommand = command;
                 adapter.Fill(table);
                 dataGridView3.DataSource = table;
@@ -245,6 +245,13 @@ namespace ИС_ПОЗМС
         private void button2_Click(object sender, EventArgs e)
         {
             Добавление_поставщиков добавление = new Добавление_поставщиков();
+            добавление.Owner = this;
+            добавление.Show();
+        }
+
+        private void btnAddRecord_Click(object sender, EventArgs e)
+        {
+            Добавление_записи добавление = new Добавление_записи();
             добавление.Owner = this;
             добавление.Show();
         }
