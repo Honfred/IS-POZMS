@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 3.4.6
+- http://www.phpmyadmin.net
+-
+- Хост: localhost:3306
+- Время создания: Апр 30 2021 г., 13:54
+- Версия сервера: 5.6.27
+- Версия PHP: 5.5.20-pl0-gentoo
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="http://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="student_storage" collation="utf8_general_ci" charset="utf8">
+            <pma:table name="departments">
+                CREATE TABLE `departments` (
+                  `id` int(64) NOT NULL AUTO_INCREMENT,
+                  `code` int(64) NOT NULL,
+                  `name` varchar(256) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `code` (`code`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="materials">
+                CREATE TABLE `materials` (
+                  `id` int(64) NOT NULL AUTO_INCREMENT,
+                  `articul` int(64) NOT NULL,
+                  `name` varchar(256) NOT NULL,
+                  `count` int(64) NOT NULL,
+                  `min_count` int(64) NOT NULL,
+                  `organization` int(64) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `articul` (`articul`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="organizations">
+                CREATE TABLE `organizations` (
+                  `id` int(64) NOT NULL AUTO_INCREMENT,
+                  `name` varchar(256) NOT NULL,
+                  `phone` int(128) DEFAULT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `name` (`name`(255))
+                ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="records">
+                CREATE TABLE `records` (
+                  `id` int(64) NOT NULL AUTO_INCREMENT,
+                  `materials` int(64) NOT NULL,
+                  `org_in` int(64) DEFAULT NULL,
+                  `dep_to` int(64) DEFAULT NULL,
+                  `date_time` datetime NOT NULL,
+                  `in_out_count` int(64) NOT NULL,
+                  `in_out` varchar(6) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `materials` (`materials`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="users">
+                CREATE TABLE `users` (
+                  `id` int(64) NOT NULL AUTO_INCREMENT,
+                  `fio` varchar(256) NOT NULL,
+                  `password` varchar(64) NOT NULL,
+                  `department` int(11) NOT NULL,
+                  `phone` int(64) DEFAULT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `department` (`department`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - База данных: 'student_storage'
+    -->
+    <database name="student_storage">
+        <!-- Таблица departments -->
+        <table name="departments">
+            <column name="id">1</column>
+            <column name="code">100</column>
+            <column name="name">Отдел труда и заработной платы</column>
+        </table>
+        <table name="departments">
+            <column name="id">2</column>
+            <column name="code">200</column>
+            <column name="name">Отдел кадров</column>
+        </table>
+        <!-- Таблица materials -->
+        <table name="materials">
+            <column name="id">1</column>
+            <column name="articul">46855345</column>
+            <column name="name">гайка m6</column>
+            <column name="count">260</column>
+            <column name="min_count">1000</column>
+            <column name="organization">1</column>
+        </table>
+        <table name="materials">
+            <column name="id">2</column>
+            <column name="articul">2412165</column>
+            <column name="name">Молоток</column>
+            <column name="count">10</column>
+            <column name="min_count">5</column>
+            <column name="organization">1</column>
+        </table>
+        <table name="materials">
+            <column name="id">3</column>
+            <column name="articul">531561654</column>
+            <column name="name">Щетка-сметка</column>
+            <column name="count">20</column>
+            <column name="min_count">5</column>
+            <column name="organization">1</column>
+        </table>
+        <!-- Таблица organizations -->
+        <table name="organizations">
+            <column name="id">1</column>
+            <column name="name">ООО &quot;Рога и копыта&quot;</column>
+            <column name="phone">7253535</column>
+        </table>
+        <table name="organizations">
+            <column name="id">4</column>
+            <column name="name">ывапыврыпр</column>
+            <column name="phone">1452525</column>
+        </table>
+        <table name="organizations">
+            <column name="id">5</column>
+            <column name="name">фыфвфыв</column>
+            <column name="phone">4785696</column>
+        </table>
+        <table name="organizations">
+            <column name="id">6</column>
+            <column name="name">фывафвафвыа</column>
+            <column name="phone">1485149149</column>
+        </table>
+        <table name="organizations">
+            <column name="id">7</column>
+            <column name="name">ывпаыпывпрв</column>
+            <column name="phone">453453453</column>
+        </table>
+        <table name="organizations">
+            <column name="id">8</column>
+            <column name="name">ыапыркрр</column>
+            <column name="phone">1475358732</column>
+        </table>
+        <table name="organizations">
+            <column name="id">9</column>
+            <column name="name">ОАО &quot;Полёт&quot;</column>
+            <column name="phone">2147483647</column>
+        </table>
+        <!-- Таблица records -->
+        <table name="records">
+            <column name="id">1</column>
+            <column name="materials">1</column>
+            <column name="org_in">1</column>
+            <column name="dep_to">NULL</column>
+            <column name="date_time">2021-04-23 00:00:00</column>
+            <column name="in_out_count">30</column>
+            <column name="in_out">Пришло</column>
+        </table>
+        <table name="records">
+            <column name="id">2</column>
+            <column name="materials">1</column>
+            <column name="org_in">NULL</column>
+            <column name="dep_to">2</column>
+            <column name="date_time">2021-04-26 09:25:41</column>
+            <column name="in_out_count">10</column>
+            <column name="in_out">Ушло</column>
+        </table>
+        <table name="records">
+            <column name="id">3</column>
+            <column name="materials">1</column>
+            <column name="org_in">1</column>
+            <column name="dep_to">NULL</column>
+            <column name="date_time">2021-04-30 09:20:57</column>
+            <column name="in_out_count">10</column>
+            <column name="in_out">Пришло</column>
+        </table>
+        <table name="records">
+            <column name="id">4</column>
+            <column name="materials">1</column>
+            <column name="org_in">NULL</column>
+            <column name="dep_to">5</column>
+            <column name="date_time">2021-04-30 13:22:25</column>
+            <column name="in_out_count">25</column>
+            <column name="in_out">Пришло</column>
+        </table>
+        <table name="records">
+            <column name="id">5</column>
+            <column name="materials">1</column>
+            <column name="org_in">NULL</column>
+            <column name="dep_to">5</column>
+            <column name="date_time">2021-04-30 13:23:16</column>
+            <column name="in_out_count">25</column>
+            <column name="in_out">Пришло</column>
+        </table>
+        <table name="records">
+            <column name="id">6</column>
+            <column name="materials">1</column>
+            <column name="org_in">NULL</column>
+            <column name="dep_to">5</column>
+            <column name="date_time">2021-04-30 13:24:37</column>
+            <column name="in_out_count">25</column>
+            <column name="in_out">Пришло</column>
+        </table>
+        <table name="records">
+            <column name="id">8</column>
+            <column name="materials">3</column>
+            <column name="org_in">1</column>
+            <column name="dep_to">NULL</column>
+            <column name="date_time">2021-04-30 13:45:54</column>
+            <column name="in_out_count">25</column>
+            <column name="in_out">Пришло</column>
+        </table>
+        <table name="records">
+            <column name="id">9</column>
+            <column name="materials">2</column>
+            <column name="org_in">NULL</column>
+            <column name="dep_to">2</column>
+            <column name="date_time">2021-04-30 13:47:47</column>
+            <column name="in_out_count">25</column>
+            <column name="in_out">Ушло</column>
+        </table>
+        <table name="records">
+            <column name="id">10</column>
+            <column name="materials">2</column>
+            <column name="org_in">9</column>
+            <column name="dep_to">NULL</column>
+            <column name="date_time">2021-04-30 13:48:14</column>
+            <column name="in_out_count">25</column>
+            <column name="in_out">Пришло</column>
+        </table>
+        <!-- Таблица users -->
+        <table name="users">
+            <column name="id">1</column>
+            <column name="fio">Иванов Иван Иванович</column>
+            <column name="password">123</column>
+            <column name="department">1</column>
+            <column name="phone">0</column>
+        </table>
+        <table name="users">
+            <column name="id">2</column>
+            <column name="fio">Алинова Света Николаевна</column>
+            <column name="password">202cb962ac59075b964b07152d234b70</column>
+            <column name="department">2</column>
+            <column name="phone">0</column>
+        </table>
+        <table name="users">
+            <column name="id">3</column>
+            <column name="fio">Кандратьев Алексей Иванович</column>
+            <column name="password"></column>
+            <column name="department">1</column>
+            <column name="phone">NULL</column>
+        </table>
+        <table name="users">
+            <column name="id">4</column>
+            <column name="fio">Вершикова Юлия Николаевна</column>
+            <column name="password"></column>
+            <column name="department">2</column>
+            <column name="phone">NULL</column>
+        </table>
+        <table name="users">
+            <column name="id">5</column>
+            <column name="fio">Горохин Пётр Афонасиевич</column>
+            <column name="password">68053af2923e00204c3ca7c6a3150cf7</column>
+            <column name="department">2</column>
+            <column name="phone">656457458</column>
+        </table>
+    </database>
+</pma_xml_export>
