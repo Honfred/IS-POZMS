@@ -238,11 +238,11 @@ namespace ИС_ПОЗМС
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        DataBank.Номер = reader[0].ToString();
+                        DataBank.Номер = Convert.ToInt32(reader[0]);
                         DataBank.Название_предмета = reader[1].ToString();
                         DataBank.Поставщик = reader[2].ToString();
                         DataBank.Дата_и_время = reader[3].ToString();
-                        DataBank.Количество = reader[4].ToString();
+                        DataBank.Количество = Convert.ToInt32(reader[4]);
                         DataBank.Действие = reader[5].ToString();
                     }
                     reader.Close();
@@ -260,11 +260,11 @@ namespace ИС_ПОЗМС
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        DataBank.Номер = reader[0].ToString();
+                        DataBank.Номер = Convert.ToInt32(reader[0]);
                         DataBank.Название_предмета = reader[1].ToString();
-                        DataBank.Код_подразделения = reader[2].ToString();
+                        DataBank.Подразделение = reader[2].ToString();
                         DataBank.Дата_и_время = reader[3].ToString();
-                        DataBank.Количество = reader[4].ToString();
+                        DataBank.Количество = Convert.ToInt32(reader[4]);
                         DataBank.Действие = reader[5].ToString();
                     }
                     reader.Close();
