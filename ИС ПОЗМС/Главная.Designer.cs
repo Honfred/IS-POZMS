@@ -54,6 +54,7 @@ namespace ИС_ПОЗМС
             this.btnExit3 = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnUpdateRecord = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -154,19 +155,18 @@ namespace ИС_ПОЗМС
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(845, 625);
+            this.btnExit.Location = new System.Drawing.Point(850, 625);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(200, 28);
             this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Выход";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Visible = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(920, 22);
+            this.label1.Location = new System.Drawing.Point(926, 22);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 16);
@@ -175,7 +175,7 @@ namespace ИС_ПОЗМС
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(845, 589);
+            this.button1.Location = new System.Drawing.Point(850, 589);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(200, 28);
@@ -187,12 +187,12 @@ namespace ИС_ПОЗМС
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(845, 42);
+            this.textBox1.Location = new System.Drawing.Point(850, 42);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(201, 22);
             this.textBox1.TabIndex = 2;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dataGridView1
             // 
@@ -229,6 +229,7 @@ namespace ИС_ПОЗМС
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage3.Controls.Add(this.btnUpdateRecord);
             this.tabPage3.Controls.Add(this.btnExit2);
             this.tabPage3.Controls.Add(this.label4);
             this.tabPage3.Controls.Add(this.comboBox1);
@@ -309,7 +310,7 @@ namespace ИС_ПОЗМС
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(201, 22);
             this.textBox3.TabIndex = 7;
-            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // dataGridView3
             // 
@@ -371,6 +372,17 @@ namespace ИС_ПОЗМС
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Сотрудники";
             // 
+            // btnUpdateRecord
+            // 
+            this.btnUpdateRecord.Location = new System.Drawing.Point(845, 552);
+            this.btnUpdateRecord.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdateRecord.Name = "btnUpdateRecord";
+            this.btnUpdateRecord.Size = new System.Drawing.Size(203, 28);
+            this.btnUpdateRecord.TabIndex = 13;
+            this.btnUpdateRecord.Text = "Редактировать запись";
+            this.btnUpdateRecord.UseVisualStyleBackColor = true;
+            this.btnUpdateRecord.Click += new System.EventHandler(this.btnUpdateRecord_Click);
+            // 
             // Главная
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -431,5 +443,6 @@ namespace ИС_ПОЗМС
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnExit2;
         private System.Windows.Forms.Button btnExit3;
+        private System.Windows.Forms.Button btnUpdateRecord;
     }
 }

@@ -101,6 +101,12 @@
     <Compile Include="Добавление_поставщиков.Designer.cs">
       <DependentUpon>Добавление_поставщиков.cs</DependentUpon>
     </Compile>
+    <Compile Include="Редактирование_записи.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Редактирование_записи.Designer.cs">
+      <DependentUpon>Редактирование_записи.cs</DependentUpon>
+    </Compile>
     <Compile Include="СкладDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Добавление_поставщиков.resx">
       <DependentUpon>Добавление_поставщиков.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Редактирование_записи.resx">
+      <DependentUpon>Редактирование_записи.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

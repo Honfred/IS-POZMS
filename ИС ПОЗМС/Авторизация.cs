@@ -28,7 +28,7 @@ namespace ИС_ПОЗМС
             {
                 string login = TextLogin.Text.Trim();
                 string pass = TextPass.Text.Trim();
-                string Sqlreq = "SELECT Id_users FROM Users WHERE fio = '" + login + "' AND password = md5('" + pass + "') LIMIT 1;";
+                string Sqlreq = "SELECT id FROM users WHERE fio = '" + login + "' AND password = ('" + pass + "');";
 
                 db.openConnection();
 

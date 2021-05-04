@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +11,11 @@ using System.Windows.Forms;
 
 namespace ИС_ПОЗМС
 {
-    public partial class Добавление_записи : Form
+    public partial class Редактирование_записи : Form
     {
         DB db = new DB();
 
-
-        public Добавление_записи()
+        public Редактирование_записи()
         {
             InitializeComponent();
 
@@ -45,7 +43,7 @@ namespace ИС_ПОЗМС
             if (comboBox1.Text == "Пришло")
             {
                 string Sqlreq = "insert into records (materials, org_in, date_time, in_out_count, in_out) values ((SELECT id FROM materials where name = '" + comboBox2.Text + "'), (SELECT id FROM organizations where name = '" + comboBox3.Text + "'), GETDATE(), 25, 'Пришло')";
-                
+
                 SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
                 command.ExecuteNonQuery();
 
@@ -57,7 +55,7 @@ namespace ИС_ПОЗМС
             if (comboBox1.Text == "Ушло")
             {
                 string Sqlreq = "insert into records (materials, dep_to, date_time, in_out_count, in_out) values ((SELECT id FROM materials where name = '" + comboBox2.Text + "'), (SELECT id FROM departments where name = '" + comboBox3.Text + "'), GETDATE(), 25, 'Ушло')";
-                
+
                 SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
                 command.ExecuteNonQuery();
 
@@ -67,7 +65,7 @@ namespace ИС_ПОЗМС
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.Text == "Пришло")
             {
@@ -100,8 +98,6 @@ namespace ИС_ПОЗМС
                 reader.Close();
             }
         }
-
-        
     }
 }
 //разница в значениях при редактировании и после в update
