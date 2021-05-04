@@ -44,7 +44,7 @@ namespace ИС_ПОЗМС
                     Главная главная = new Главная();
                     db.closeConnection();
                     главная.Show();
-                    this.Close();
+                    this.Hide();
                 }
                 else { MessageBox.Show("Логин и/или пароль введены не правильно"); }
             }
