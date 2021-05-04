@@ -126,3 +126,4 @@ C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.c
 C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.exe
 C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС ПОЗМС.pdb
 C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Редактирование_записи.resources
+C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\obj\Debug\ИС_ПОЗМС.Добавление_материалов.resources

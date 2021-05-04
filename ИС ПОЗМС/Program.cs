@@ -16,7 +16,7 @@ namespace ИС_ПОЗМС
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Главная());
+            Application.Run(new Авторизация());
         }
     }
 }

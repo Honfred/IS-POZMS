@@ -58,7 +58,7 @@ namespace ИС_ПОЗМС
                 SqlCommand command1 = new SqlCommand(SqlReqUpdate, db.GetConnection());
                 command1.ExecuteNonQuery();
 
-                this.Hide();
+                this.Close();
 
                 db.closeConnection();
             }
@@ -76,7 +76,7 @@ namespace ИС_ПОЗМС
                 SqlCommand command1 = new SqlCommand(SqlReqUpdate, db.GetConnection());
                 command1.ExecuteNonQuery();
 
-                this.Hide();
+                this.Close();
 
                 db.closeConnection();
             }

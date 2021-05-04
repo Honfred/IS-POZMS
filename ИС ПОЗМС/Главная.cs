@@ -15,6 +15,7 @@ namespace ИС_ПОЗМС
     public partial class Главная : Form
     {
         DB db = new DB();
+        Авторизация авторизация = new Авторизация();
 
         public Главная()
         {
@@ -32,6 +33,8 @@ namespace ИС_ПОЗМС
             Organizations(); //Поставщики
 
             Departments(); //Подразделения
+
+            Users(); //Сотрудники
         }
 
         public void Materials()
@@ -72,7 +75,6 @@ namespace ИС_ПОЗМС
 
         public void Organizations()
         {
-
             string Sqlreq = "SELECT name, phone FROM organizations WHERE name like '%" + textBox2.Text.Trim() + "%';";
 
             SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
@@ -89,7 +91,7 @@ namespace ИС_ПОЗМС
 
         private void Departments()
         {
-            string Sqlreq = "SELECT code, name, phone FROM departments";
+            string Sqlreq = "SELECT code, name, phone FROM departments WHERE code like '%" + textBox4.Text.Trim() + "%' OR name like '%" + textBox4.Text.Trim() + "%'";
             SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
@@ -146,6 +148,30 @@ namespace ИС_ПОЗМС
                 dataGridView3.Columns[5].HeaderText = "Действие";
                 dataGridView3.Columns[0].Width = 50;
             }
+        }
+
+        private void Users()
+        {
+            string Sqlreq = "SELECT u.fio, d.name, u.phone FROM users AS u, departments AS d WHERE u.fio LIKE '%" + textBox5.Text.Trim() + "%' OR d.name LIKE '%" + textBox5.Text.Trim() + "%';";
+
+            SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable table = new DataTable();
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+
+            dataGridView5.DataSource = table;
+
+            dataGridView5.Columns[0].HeaderText = "Фамилия Имя Отчество";
+            dataGridView5.Columns[1].HeaderText = "Отдел";
+            dataGridView5.Columns[2].HeaderText = "Номер телефона";
+        }
+
+        private void Exit()
+        {
+            db.closeConnection();
+            авторизация.Show();
+            this.Close();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -212,6 +238,12 @@ namespace ИС_ПОЗМС
             редактирование.Show();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Добавление_материалов добавление_Материалов = new Добавление_материалов();
+            добавление_Материалов.Show();
+        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             Materials();
@@ -220,6 +252,16 @@ namespace ИС_ПОЗМС
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             Records();
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            Departments();
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            Users();
         }
 
         private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -272,9 +314,56 @@ namespace ИС_ПОЗМС
             }
 
         }
+
+        private void btnUpdate1_Click(object sender, EventArgs e)
+        {
+            Materials();
+        }
+
+        private void btnUpdate2_Click(object sender, EventArgs e)
+        {
+            Organizations();
+        }
+
+        private void btnUpdate3_Click(object sender, EventArgs e)
+        {
+            Records();
+        }
+
+        private void btnUpdate4_Click(object sender, EventArgs e)
+        {
+            Departments();
+        }
+
+        private void btnUpdate5_Click(object sender, EventArgs e)
+        {
+            Users();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Exit();
+        }
+
+        private void btnExit1_Click(object sender, EventArgs e)
+        {
+            Exit();
+        }
+
+        private void btnExit2_Click(object sender, EventArgs e)
+        {
+            Exit();
+        }
+
+        private void btnExit3_Click(object sender, EventArgs e)
+        {
+            Exit();
+        }
+
+        private void btnExit4_Click(object sender, EventArgs e)
+        {
+            Exit();
+        }
     }
 }
-
-//UPDATE materials SET count = count + 10 WHERE id = 1;
-
 //Добавления новых материалов в таблице материалы
