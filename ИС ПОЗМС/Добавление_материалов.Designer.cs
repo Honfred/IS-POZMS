@@ -101,6 +101,7 @@ namespace ИС_ПОЗМС
             // 
             // Добавление_материалов
             // 
+            this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(264, 282);
@@ -113,6 +114,8 @@ namespace ИС_ПОЗМС
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Добавление_материалов";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление_материалов";
             this.Load += new System.EventHandler(this.Добавление_материалов_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

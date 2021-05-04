@@ -165,6 +165,9 @@ namespace ИС_ПОЗМС
             dataGridView5.Columns[0].HeaderText = "Фамилия Имя Отчество";
             dataGridView5.Columns[1].HeaderText = "Отдел";
             dataGridView5.Columns[2].HeaderText = "Номер телефона";
+            dataGridView5.Columns[0].Width = 220;
+            dataGridView5.Columns[1].Width = 240;
+            dataGridView5.Columns[2].Width = 145;
         }
 
         private void Exit()
