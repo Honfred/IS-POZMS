@@ -44,10 +44,14 @@ namespace ИС_ПОЗМС
         {
             if (comboBox1.Text == "Пришло")
             {
-                string Sqlreq = "insert into records (materials, org_in, date_time, in_out_count, in_out) values ((SELECT id FROM materials where name = '" + comboBox2.Text + "'), (SELECT id FROM organizations where name = '" + comboBox3.Text + "'), GETDATE(), 25, 'Пришло')";
-                
-                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
+                string SqlReqAdd = "insert into records (materials, org_in, date_time, in_out_count, in_out) values ((SELECT id FROM materials where name = '" + comboBox2.Text + "'), (SELECT id FROM organizations where name = '" + comboBox3.Text + "'), GETDATE(), '" + numericUpDown1.Value + "', 'Пришло');";
+                string SqlReqUpdate = $"UPDATE materials SET count = count + {numericUpDown1.Value} WHERE name = '{comboBox2.Text}' AND organization = (SELECT id FROM organizations where name = '{comboBox3.Text}');";
+
+                SqlCommand command = new SqlCommand(SqlReqAdd, db.GetConnection());
                 command.ExecuteNonQuery();
+
+                SqlCommand command1 = new SqlCommand(SqlReqUpdate, db.GetConnection());
+                command1.ExecuteNonQuery();
 
                 this.Hide();
 
@@ -56,10 +60,14 @@ namespace ИС_ПОЗМС
 
             if (comboBox1.Text == "Ушло")
             {
-                string Sqlreq = "insert into records (materials, dep_to, date_time, in_out_count, in_out) values ((SELECT id FROM materials where name = '" + comboBox2.Text + "'), (SELECT id FROM departments where name = '" + comboBox3.Text + "'), GETDATE(), 25, 'Ушло')";
-                
-                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
+                string SqlReqAdd = "insert into records (materials, dep_to, date_time, in_out_count, in_out) values ((SELECT id FROM materials where name = '" + comboBox2.Text + "'), (SELECT id FROM departments where name = '" + comboBox3.Text + "'), GETDATE(), '" + numericUpDown1.Value + "', 'Ушло');";
+                string SqlReqUpdate = $"UPDATE materials SET count = count - {numericUpDown1.Value} WHERE name = '{comboBox2.Text}' AND organization = (SELECT id FROM departments where name = '{comboBox3.Text}');";
+
+                SqlCommand command = new SqlCommand(SqlReqAdd, db.GetConnection());
                 command.ExecuteNonQuery();
+
+                SqlCommand command1 = new SqlCommand(SqlReqUpdate, db.GetConnection());
+                command1.ExecuteNonQuery();
 
                 this.Hide();
 

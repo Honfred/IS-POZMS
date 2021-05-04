@@ -14,8 +14,6 @@ namespace ИС_ПОЗМС
 {
     public partial class Главная : Form
     {
-        SqlDataAdapter adapter = new SqlDataAdapter();
-        DataTable table = new DataTable();
         DB db = new DB();
 
         public Главная()
@@ -25,7 +23,6 @@ namespace ИС_ПОЗМС
 
         private void Главная_Load(object sender, EventArgs e)
         {
-            DB db = new DB();
             db.openConnection();
 
             Min_materials(); //Проверка материала на количество, если меньше то выдаст сообщение
@@ -61,6 +58,7 @@ namespace ИС_ПОЗМС
             string Sqlreq = "SELECT * FROM materials where count < min_count;";
             SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
             DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
 
             adapter.SelectCommand = command;
             adapter.Fill(table);
@@ -94,6 +92,7 @@ namespace ИС_ПОЗМС
             string Sqlreq = "SELECT code, name, phone FROM departments";
             SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
             DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.SelectCommand = command;
             adapter.Fill(table);
             dataGridView4.DataSource = table;
@@ -126,7 +125,7 @@ namespace ИС_ПОЗМС
                 dataGridView3.Columns[3].HeaderText = "Дата и время";
                 dataGridView3.Columns[4].HeaderText = "Количество";
                 dataGridView3.Columns[5].HeaderText = "Действие";
-                dataGridView3.Columns[0].Width = 45;
+                dataGridView3.Columns[0].Width = 50;
             }
 
             if (comboBox1.Text == "Ушло")
@@ -145,7 +144,7 @@ namespace ИС_ПОЗМС
                 dataGridView3.Columns[3].HeaderText = "Дата и время";
                 dataGridView3.Columns[4].HeaderText = "Количество";
                 dataGridView3.Columns[5].HeaderText = "Действие";
-                dataGridView3.Columns[0].Width = 45;
+                dataGridView3.Columns[0].Width = 50;
             }
         }
 
@@ -208,9 +207,9 @@ namespace ИС_ПОЗМС
 
         private void btnUpdateRecord_Click(object sender, EventArgs e)
         {
-            Добавление_записи добавление = new Добавление_записи();
-            добавление.Owner = this;
-            добавление.Show();
+            Редактирование_записи редактирование = new Редактирование_записи();
+            редактирование.Owner = this;
+            редактирование.Show();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -222,11 +221,60 @@ namespace ИС_ПОЗМС
         {
             Records();
         }
+
+        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            db.openConnection();
+            
+            if (comboBox1.Text == "Пришло")
+            {
+                if (e.ColumnIndex != -1 && e.RowIndex != -1)
+                {
+                    int row, id;
+                    row = dataGridView3.SelectedCells[0].RowIndex;
+                    id = Convert.ToInt32(dataGridView3.Rows[row].Cells[0].Value.ToString());
+                    string query = $"SELECT r.id, m.name, o.name, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, organizations AS o WHERE r.materials = m.id AND r.org_in = o.id AND r.id = '{id}'; ";
+                    SqlCommand command = new SqlCommand(query, db.GetConnection()); 
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        DataBank.Номер = reader[0].ToString();
+                        DataBank.Название_предмета = reader[1].ToString();
+                        DataBank.Поставщик = reader[2].ToString();
+                        DataBank.Дата_и_время = reader[3].ToString();
+                        DataBank.Количество = reader[4].ToString();
+                        DataBank.Действие = reader[5].ToString();
+                    }
+                    reader.Close();
+                }
+            }
+            if (comboBox1.Text == "Ушло")
+            {
+                if (e.ColumnIndex != -1 && e.RowIndex != -1)
+                {
+                    int row, id;
+                    row = dataGridView3.SelectedCells[0].RowIndex;
+                    id = Convert.ToInt32(dataGridView3.Rows[row].Cells[0].Value.ToString());
+                    string query = $"SELECT r.id, m.name, d.code, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, departments AS d WHERE r.materials = m.id AND r.dep_to = d.id AND r.id = '{id}'; ";
+                    SqlCommand command = new SqlCommand(query, db.GetConnection()); 
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        DataBank.Номер = reader[0].ToString();
+                        DataBank.Название_предмета = reader[1].ToString();
+                        DataBank.Код_подразделения = reader[2].ToString();
+                        DataBank.Дата_и_время = reader[3].ToString();
+                        DataBank.Количество = reader[4].ToString();
+                        DataBank.Действие = reader[5].ToString();
+                    }
+                    reader.Close();
+                }
+            }
+
+        }
     }
 }
 
-
-//INSERT INTO `student_storage`.`record` (`id`, `materials`, `dep_to`, `date_time`, `in_out_count`, `in_out`) VALUES (NULL, '1', '1', NOW(), '10', '0');
-
-
 //UPDATE materials SET count = count + 10 WHERE id = 1;
+
+//Добавления новых материалов в таблице материалы

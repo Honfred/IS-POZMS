@@ -36,36 +36,17 @@ namespace ИС_ПОЗМС
                 comboBox2.Items.Add(String.Format("{0}", reader[0]));
             }
             reader.Close();
+
+            comboBox1.Text = DataBank.Действие;
+            comboBox2.Text = DataBank.Название_предмета;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.Text == "Пришло")
-            {
-                string Sqlreq = "insert into records (materials, org_in, date_time, in_out_count, in_out) values ((SELECT id FROM materials where name = '" + comboBox2.Text + "'), (SELECT id FROM organizations where name = '" + comboBox3.Text + "'), GETDATE(), 25, 'Пришло')";
-
-                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
-                command.ExecuteNonQuery();
-
-                this.Hide();
-
-                db.closeConnection();
-            }
-
-            if (comboBox1.Text == "Ушло")
-            {
-                string Sqlreq = "insert into records (materials, dep_to, date_time, in_out_count, in_out) values ((SELECT id FROM materials where name = '" + comboBox2.Text + "'), (SELECT id FROM departments where name = '" + comboBox3.Text + "'), GETDATE(), 25, 'Ушло')";
-
-                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
-                command.ExecuteNonQuery();
-
-                this.Hide();
-
-                db.closeConnection();
-            }
+            
         }
 
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.Text == "Пришло")
             {
@@ -81,6 +62,8 @@ namespace ИС_ПОЗМС
                     comboBox3.Items.Add(String.Format("{0}", reader[0]));
                 }
                 reader.Close();
+
+                comboBox3.Text = DataBank.Поставщик;
             }
 
             if (comboBox1.Text == "Ушло")
@@ -96,6 +79,8 @@ namespace ИС_ПОЗМС
                     comboBox3.Items.Add(String.Format("{0}", reader[0]));
                 }
                 reader.Close();
+
+                comboBox3.Text = DataBank.Код_подразделения;
             }
         }
     }
