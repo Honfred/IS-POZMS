@@ -105,6 +105,50 @@ namespace ИС_ПОЗМС
             dataGridView4.Columns[2].Width = 75;
         }
 
+        private void Records()
+        {
+            DataTable table = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+
+            if (comboBox1.Text == "Пришло")
+            {
+                string Sqlreq3 = "SELECT r.id, m.name, o.name, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, organizations AS o WHERE r.materials = m.id AND r.org_in = o.id AND m.name LIKE '%" + textBox3.Text.Trim() + "%';";
+
+                SqlCommand command = new SqlCommand(Sqlreq3, db.GetConnection());
+
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
+                dataGridView3.DataSource = table;
+
+                dataGridView3.Columns[0].HeaderText = "Номер";
+                dataGridView3.Columns[1].HeaderText = "Название предмета";
+                dataGridView3.Columns[2].HeaderText = "Поставщик";
+                dataGridView3.Columns[3].HeaderText = "Дата и время";
+                dataGridView3.Columns[4].HeaderText = "Количество";
+                dataGridView3.Columns[5].HeaderText = "Действие";
+                dataGridView3.Columns[0].Width = 45;
+            }
+
+            if (comboBox1.Text == "Ушло")
+            {
+                string Sqlreq3 = "SELECT r.id, m.name, d.code, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, departments AS d WHERE r.materials = m.id AND r.dep_to = d.id AND m.name LIKE '%" + textBox3.Text.Trim() + "%';";
+
+                SqlCommand command = new SqlCommand(Sqlreq3, db.GetConnection());
+
+                adapter.SelectCommand = command;
+                adapter.Fill(table);
+                dataGridView3.DataSource = table;
+
+                dataGridView3.Columns[0].HeaderText = "Номер";
+                dataGridView3.Columns[1].HeaderText = "Название предмета";
+                dataGridView3.Columns[2].HeaderText = "Код подразделения";
+                dataGridView3.Columns[3].HeaderText = "Дата и время";
+                dataGridView3.Columns[4].HeaderText = "Количество";
+                dataGridView3.Columns[5].HeaderText = "Действие";
+                dataGridView3.Columns[0].Width = 45;
+            }
+        }
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (textBox1.Text != "")
@@ -143,51 +187,9 @@ namespace ИС_ПОЗМС
             Organizations();
         }
 
-        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-            if (comboBox1.Text == "Пришло")
-            {
-                string Sqlreq3 = "SELECT r.id, m.name, o.name, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, organizations AS o WHERE r.materials = m.id AND r.org_in = o.id;";
-
-                SqlCommand command = new SqlCommand(Sqlreq3, db.GetConnection());
-
-                adapter.SelectCommand = command;
-                adapter.Fill(table);
-                dataGridView3.DataSource = table;
-
-                dataGridView3.Columns[0].HeaderText = "Номер";
-                dataGridView3.Columns[1].HeaderText = "Название предмета";
-                dataGridView3.Columns[2].HeaderText = "Поставщик";
-                dataGridView3.Columns[3].HeaderText = "Дата и время";
-                dataGridView3.Columns[4].HeaderText = "Количество";
-                dataGridView3.Columns[5].HeaderText = "Действие";
-            }
-
-            if (comboBox1.Text == "Ушло")
-            {
-                string Sqlreq3 = "SELECT r.id, m.name, d.code, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, departments AS d WHERE r.materials = m.id AND r.dep_to = d.id;";
-
-                SqlCommand command = new SqlCommand(Sqlreq3, db.GetConnection());
-                
-                adapter.SelectCommand = command;
-                adapter.Fill(table);
-                dataGridView3.DataSource = table;
-
-                dataGridView3.Columns[0].HeaderText = "Номер";
-                dataGridView3.Columns[1].HeaderText = "Название предмета";
-                dataGridView3.Columns[2].HeaderText = "Код подразделения";
-                dataGridView3.Columns[3].HeaderText = "Дата и время";
-                dataGridView3.Columns[4].HeaderText = "Количество";
-                dataGridView3.Columns[5].HeaderText = "Действие";
-            }
+            Records();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -218,46 +220,7 @@ namespace ИС_ПОЗМС
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            if (comboBox1.Text == "Пришло")
-            {
-                string Sqlreq = "SELECT r.id, m.name, o.name, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, organizations AS o WHERE r.materials = m.id AND r.org_in = o.id AND m.name LIKE '%" + textBox3.Text.Trim() + "%';";
-
-                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
-                DataTable table = new DataTable();
-                SqlDataAdapter adapter = new SqlDataAdapter();
-
-                adapter.SelectCommand = command;
-                adapter.Fill(table);
-                dataGridView3.DataSource = table;
-
-                dataGridView3.Columns[0].HeaderText = "Номер";
-                dataGridView3.Columns[1].HeaderText = "Название предмета";
-                dataGridView3.Columns[2].HeaderText = "Поставщик";
-                dataGridView3.Columns[3].HeaderText = "Дата и время";
-                dataGridView3.Columns[4].HeaderText = "Количество";
-                dataGridView3.Columns[5].HeaderText = "Действие";
-
-            }
-
-            if (comboBox1.Text == "Ушло")
-            {
-                string Sqlreq = "SELECT r.id, m.name, d.code, r.date_time, r.in_out_count, r.in_out FROM records AS r, materials AS m, departments AS d WHERE r.materials = m.id AND r.dep_to = d.id AND m.name LIKE '%" + textBox3.Text.Trim() + "%';";
-
-                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
-
-                DataTable table = new DataTable();
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter.SelectCommand = command;
-                adapter.Fill(table);
-                dataGridView3.DataSource = table;
-
-                dataGridView3.Columns[0].HeaderText = "Номер";
-                dataGridView3.Columns[1].HeaderText = "Название предмета";
-                dataGridView3.Columns[2].HeaderText = "Код подразделения";
-                dataGridView3.Columns[3].HeaderText = "Дата и время";
-                dataGridView3.Columns[4].HeaderText = "Количество";
-                dataGridView3.Columns[5].HeaderText = "Действие";
-            }
+            Records();
         }
     }
 }
