@@ -39,7 +39,7 @@ namespace ИС_ПОЗМС
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 29);
+            this.label1.Location = new System.Drawing.Point(16, 29);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(155, 16);
@@ -49,7 +49,7 @@ namespace ИС_ПОЗМС
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 84);
+            this.label2.Location = new System.Drawing.Point(16, 84);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(197, 16);
@@ -74,9 +74,9 @@ namespace ИС_ПОЗМС
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(308, 73);
+            this.button1.Location = new System.Drawing.Point(288, 73);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 23);
+            this.button1.Size = new System.Drawing.Size(112, 27);
             this.button1.TabIndex = 4;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@ namespace ИС_ПОЗМС
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 167);
+            this.ClientSize = new System.Drawing.Size(428, 167);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
