@@ -17,6 +17,7 @@ namespace ИС_ПОЗМС
                 db.openConnection();
 
                 Materials(); // Заполнения вариантами поля материалы
+                Users();
 
                 numericUpDown1.Value = DataBank.Количество;
             }
@@ -50,16 +51,46 @@ namespace ИС_ПОЗМС
             }
         }
 
+        private void Users()
+        {
+            try
+            {
+                string Sqlreq = "SELECT fio FROM users";
+
+                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    comboBox4.Items.Add(String.Format("{0}", reader[0]));
+                }
+                reader.Close();
+
+                comboBox4.Text = DataBank.ФИО;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
                 if (comboBox1.Text == "Пришло")
                 {
-                    string SqlReqAdd = $"UPDATE records SET materials = (SELECT id FROM materials where name = '{comboBox2.Text}'), org_in = (SELECT id FROM organizations where name = '{comboBox3.Text}'), in_out_count = '{numericUpDown1.Value}' WHERE id = {DataBank.Номер};";
+                    string SqlReqAdd = $"UPDATE records " +
+                        $"SET materials = (SELECT id FROM materials where name = '{comboBox2.Text}'), " +
+                        $"org_in = (SELECT id FROM organizations where name = '{comboBox3.Text}'), " +
+                        $"in_out_count = '{numericUpDown1.Value}' WHERE id = {DataBank.Номер};";
+
                     diff = Convert.ToInt32(numericUpDown1.Value);
-                    diff = diff - DataBank.Количество;
-                    string SqlReqUpdate = $"UPDATE materials SET count = count + {diff} WHERE name = '{comboBox2.Text}' AND organization = (SELECT id FROM organizations where name = '{comboBox3.Text}');";
+                    diff -= DataBank.Количество;
+                    string SqlReqUpdate = $"UPDATE materials " +
+                        $"SET count += {diff} " +
+                        $"WHERE name = '{comboBox2.Text}' AND " +
+                        $"organization = (SELECT id FROM organizations where name = '{comboBox3.Text}');";
 
                     SqlCommand command = new SqlCommand(SqlReqAdd, db.GetConnection());
                     command.ExecuteNonQuery();
@@ -74,10 +105,18 @@ namespace ИС_ПОЗМС
 
                 if (comboBox1.Text == "Ушло")
                 {
-                    string SqlReqAdd = $"UPDATE records SET materials = (SELECT id FROM materials where name = '{comboBox2.Text}'), dep_to = (SELECT id FROM departments where name = '{comboBox3.Text}'), in_out_count = '{numericUpDown1.Value}' WHERE id = {DataBank.Номер};";
+                    string SqlReqAdd = $"UPDATE records " +
+                        $"SET materials = (SELECT id FROM materials where name = '{comboBox2.Text}'), " +
+                        $"id_users = (SELECT id FROM users where fio = '{comboBox4.Text}'), " +
+                        $"dep_to = (SELECT id FROM departments where name = '{comboBox3.Text}'), " +
+                        $"in_out_count = '{numericUpDown1.Value}' WHERE id = {DataBank.Номер};";
+
                     diff = Convert.ToInt32(numericUpDown1.Value);
-                    diff = DataBank.Количество - diff;
-                    string SqlReqUpdate = $"UPDATE materials SET count = count - {diff} WHERE name = '{comboBox2.Text}' AND organization = (SELECT id FROM departments where name = '{comboBox3.Text}');";
+                    diff -= DataBank.Количество;
+                    string SqlReqUpdate = $"UPDATE materials " +
+                        $"SET count -= {diff} " +
+                        $"WHERE name = '{comboBox2.Text}' AND " +
+                        $"organization = (SELECT id FROM departments where name = '{comboBox3.Text}');";
 
                     SqlCommand command = new SqlCommand(SqlReqAdd, db.GetConnection());
                     command.ExecuteNonQuery();
@@ -139,6 +178,17 @@ namespace ИС_ПОЗМС
             {
                 MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void comboBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (comboBox1.Text != "")
+            {
+                string s = comboBox4.Text.ToString();
+                comboBox4.Items.Clear();
+                comboBox4.Text = s;
+            }
+            Users();
         }
     }
 }

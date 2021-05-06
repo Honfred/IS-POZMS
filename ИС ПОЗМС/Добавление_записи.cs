@@ -38,14 +38,48 @@ namespace ИС_ПОЗМС
             }
         }
 
+        private void Users()
+        {
+            try
+            {
+                
+                comboBox4.Select(comboBox1.Text.Length, 0);
+
+                string Sqlreq = $"SELECT fio FROM users WHERE fio LIKE '%{comboBox4.Text}%'";
+
+                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    comboBox4.Items.Add(String.Format("{0}", reader[0]));
+                }
+                reader.Close();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
                 if (comboBox1.Text == "Пришло")
                 {
-                    string SqlReqAdd = "insert into records (materials, org_in, date_time, in_out_count, in_out) values ((SELECT id FROM materials where name = '" + comboBox2.Text + "'), (SELECT id FROM organizations where name = '" + comboBox3.Text + "'), GETDATE(), '" + numericUpDown1.Value + "', 'Пришло');";
-                    string SqlReqUpdate = $"UPDATE materials SET count = count + {numericUpDown1.Value} WHERE name = '{comboBox2.Text}' AND organization = (SELECT id FROM organizations where name = '{comboBox3.Text}');";
+                    string SqlReqAdd = "insert into records " +
+                        "(materials, org_in, date_time, in_out_count, in_out) " +
+                        "values (" +
+                        "(SELECT id FROM materials where name = '" + comboBox2.Text + "'), " +
+                        "(SELECT id FROM organizations where name = '" + comboBox3.Text + "'), " +
+                        "GETDATE(), '" + numericUpDown1.Value + "', 'Пришло');";
+
+                    string SqlReqUpdate = $"UPDATE materials " +
+                        $"SET count = count + {numericUpDown1.Value} " +
+                        $"WHERE name = '{comboBox2.Text}' AND " +
+                        $"organization = (SELECT id FROM organizations where name = '{comboBox3.Text}');";
 
                     SqlCommand command = new SqlCommand(SqlReqAdd, db.GetConnection());
                     command.ExecuteNonQuery();
@@ -60,8 +94,18 @@ namespace ИС_ПОЗМС
 
                 if (comboBox1.Text == "Ушло")
                 {
-                    string SqlReqAdd = "insert into records (materials, dep_to, date_time, in_out_count, in_out) values ((SELECT id FROM materials where name = '" + comboBox2.Text + "'), (SELECT id FROM departments where name = '" + comboBox3.Text + "'), GETDATE(), '" + numericUpDown1.Value + "', 'Ушло');";
-                    string SqlReqUpdate = $"UPDATE materials SET count = count - {numericUpDown1.Value} WHERE name = '{comboBox2.Text}' AND organization = (SELECT id FROM departments where name = '{comboBox3.Text}');";
+                    string SqlReqAdd = "insert into records " +
+                        "(materials, id_users, dep_to, date_time, in_out_count, in_out) " +
+                        "values (" +
+                        "(SELECT id FROM materials where name = '" + comboBox2.Text + "'), " +
+                        "(SELECT id FROM users WHERE fio = '" + comboBox4.Text + "'), " +
+                        "(SELECT id FROM departments where name = '" + comboBox3.Text + "'), " +
+                        "GETDATE(), '" + numericUpDown1.Value + "', 'Ушло');";
+
+                    string SqlReqUpdate = $"UPDATE materials " +
+                        $"SET count = count - {numericUpDown1.Value} " +
+                        $"WHERE name = '{comboBox2.Text}' AND " +
+                        $"organization = (SELECT id FROM departments where name = '{comboBox3.Text}');";
 
                     SqlCommand command = new SqlCommand(SqlReqAdd, db.GetConnection());
                     command.ExecuteNonQuery();
@@ -112,6 +156,8 @@ namespace ИС_ПОЗМС
                         comboBox3.Items.Add(String.Format("{0}", reader[0]));
                     }
                     reader.Close();
+
+                    Users(); //Заполнения вариантами поля сортудник
                 }
             }
             catch (Exception ex)
@@ -120,6 +166,19 @@ namespace ИС_ПОЗМС
             }
         }
 
-
+        private void comboBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (comboBox1.Text == "Ушло")
+            {
+                if (comboBox1.Text != "")
+                {
+                    string s = comboBox4.Text.ToString();
+                    comboBox4.Items.Clear();
+                    comboBox4.Text = s;
+                }
+                Users();
+            }
+                
+        }
     }
 }

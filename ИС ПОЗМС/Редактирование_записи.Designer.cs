@@ -38,12 +38,14 @@ namespace ИС_ПОЗМС
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(12, 240);
+            this.numericUpDown1.Location = new System.Drawing.Point(10, 288);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1000000,
@@ -67,7 +69,7 @@ namespace ИС_ПОЗМС
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(35, 294);
+            this.button1.Location = new System.Drawing.Point(32, 338);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(194, 28);
@@ -81,7 +83,7 @@ namespace ИС_ПОЗМС
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(13, 171);
+            this.comboBox3.Location = new System.Drawing.Point(10, 223);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(238, 24);
@@ -89,9 +91,10 @@ namespace ИС_ПОЗМС
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(13, 98);
+            this.comboBox2.Location = new System.Drawing.Point(10, 91);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(238, 24);
@@ -105,7 +108,7 @@ namespace ИС_ПОЗМС
             this.comboBox1.Items.AddRange(new object[] {
             "Пришло",
             "Ушло"});
-            this.comboBox1.Location = new System.Drawing.Point(13, 28);
+            this.comboBox1.Location = new System.Drawing.Point(10, 28);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(238, 24);
@@ -115,7 +118,7 @@ namespace ИС_ПОЗМС
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(93, 8);
+            this.label1.Location = new System.Drawing.Point(94, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 16);
             this.label1.TabIndex = 11;
@@ -124,7 +127,7 @@ namespace ИС_ПОЗМС
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(91, 78);
+            this.label2.Location = new System.Drawing.Point(92, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 16);
             this.label2.TabIndex = 12;
@@ -133,7 +136,7 @@ namespace ИС_ПОЗМС
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(66, 151);
+            this.label3.Location = new System.Drawing.Point(67, 203);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 16);
             this.label3.TabIndex = 13;
@@ -142,17 +145,39 @@ namespace ИС_ПОЗМС
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(85, 220);
+            this.label4.Location = new System.Drawing.Point(86, 268);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 16);
             this.label4.TabIndex = 14;
             this.label4.Text = "Количество";
             // 
+            // comboBox4
+            // 
+            this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(10, 157);
+            this.comboBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(238, 24);
+            this.comboBox4.TabIndex = 15;
+            this.comboBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox4_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(90, 137);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 16);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Сотрудник";
+            // 
             // Редактирование_записи
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 335);
+            this.ClientSize = new System.Drawing.Size(264, 386);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -187,5 +212,7 @@ namespace ИС_ПОЗМС
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Label label5;
     }
 }

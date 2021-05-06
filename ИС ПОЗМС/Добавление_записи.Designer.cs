@@ -38,6 +38,8 @@ namespace ИС_ПОЗМС
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,6 +59,7 @@ namespace ИС_ПОЗМС
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(12, 83);
@@ -69,14 +72,14 @@ namespace ИС_ПОЗМС
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(12, 142);
+            this.comboBox3.Location = new System.Drawing.Point(12, 192);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(174, 24);
             this.comboBox3.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(29, 242);
+            this.button1.Location = new System.Drawing.Point(29, 292);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 23);
             this.button1.TabIndex = 4;
@@ -86,7 +89,7 @@ namespace ИС_ПОЗМС
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(12, 198);
+            this.numericUpDown1.Location = new System.Drawing.Point(12, 248);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -128,7 +131,7 @@ namespace ИС_ПОЗМС
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 123);
+            this.label3.Location = new System.Drawing.Point(37, 173);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(125, 16);
             this.label3.TabIndex = 8;
@@ -137,17 +140,38 @@ namespace ИС_ПОЗМС
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(56, 179);
+            this.label4.Location = new System.Drawing.Point(56, 229);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 16);
             this.label4.TabIndex = 9;
             this.label4.Text = "Количество";
             // 
+            // comboBox4
+            // 
+            this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(12, 137);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(174, 24);
+            this.comboBox4.TabIndex = 10;
+            this.comboBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox4_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(61, 118);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 16);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Сотрудник";
+            // 
             // Добавление_записи
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(198, 284);
+            this.ClientSize = new System.Drawing.Size(198, 335);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -182,5 +206,7 @@ namespace ИС_ПОЗМС
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.Label label5;
     }
 }

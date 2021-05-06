@@ -9,5 +9,6 @@
         static public string Дата_и_время;
         static public int Количество;
         static public string Действие;
+        static public string ФИО;
     }
 }

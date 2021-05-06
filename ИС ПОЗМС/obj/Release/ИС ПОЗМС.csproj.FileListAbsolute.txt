@@ -3,21 +3,8 @@ C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\ИС ПОЗМС
 C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\ИС ПОЗМС.pdb
 C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\EntityFramework.dll
 C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\EntityFramework.SqlServer.dll
-C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\MySql.Data.dll
-C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\Google.Protobuf.dll
-C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\Zstandard.Net.dll
-C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\K4os.Compression.LZ4.Streams.dll
-C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\BouncyCastle.Crypto.dll
-C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\Ubiety.Dns.Core.dll
-C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\System.Memory.dll
-C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\System.Buffers.dll
-C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\K4os.Compression.LZ4.dll
-C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\K4os.Hash.xxHash.dll
-C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\System.Numerics.Vectors.dll
 C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\EntityFramework.xml
 C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\EntityFramework.SqlServer.xml
-C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\MySql.Data.xml
 C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\bin\Release\ru\EntityFramework.resources.dll
 C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\obj\Release\ИС ПОЗМС.csprojAssemblyReference.cache
 C:\Users\Sin\Desktop\ИС ПОЗМС\ИС ПОЗМС\obj\Release\ИС_ПОЗМС.Properties.Resources.resources

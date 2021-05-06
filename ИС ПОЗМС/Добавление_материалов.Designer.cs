@@ -43,7 +43,7 @@ namespace ИС_ПОЗМС
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 27);
+            this.textBox1.Location = new System.Drawing.Point(13, 29);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(238, 22);
@@ -52,7 +52,7 @@ namespace ИС_ПОЗМС
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(13, 85);
+            this.textBox2.Location = new System.Drawing.Point(13, 87);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(238, 22);
@@ -60,7 +60,7 @@ namespace ИС_ПОЗМС
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(13, 143);
+            this.numericUpDown1.Location = new System.Drawing.Point(13, 145);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1000000,
@@ -87,7 +87,7 @@ namespace ИС_ПОЗМС
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(13, 200);
+            this.comboBox3.Location = new System.Drawing.Point(13, 202);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(238, 24);
@@ -95,7 +95,7 @@ namespace ИС_ПОЗМС
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(58, 246);
+            this.button1.Location = new System.Drawing.Point(59, 248);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(147, 23);
             this.button1.TabIndex = 13;
@@ -106,7 +106,7 @@ namespace ИС_ПОЗМС
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(88, 180);
+            this.label2.Location = new System.Drawing.Point(92, 182);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 16);
             this.label2.TabIndex = 14;
@@ -115,16 +115,16 @@ namespace ИС_ПОЗМС
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(85, 123);
+            this.label4.Location = new System.Drawing.Point(39, 125);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 16);
+            this.label4.Size = new System.Drawing.Size(187, 16);
             this.label4.TabIndex = 15;
-            this.label4.Text = "Количество";
+            this.label4.Text = "Минимальное колличество";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(97, 7);
+            this.label1.Location = new System.Drawing.Point(101, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 16);
             this.label1.TabIndex = 16;
@@ -133,7 +133,7 @@ namespace ИС_ПОЗМС
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(75, 65);
+            this.label3.Location = new System.Drawing.Point(79, 67);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 16);
             this.label3.TabIndex = 17;
