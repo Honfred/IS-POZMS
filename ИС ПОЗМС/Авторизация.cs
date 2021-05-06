@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace ИС_ПОЗМС
 {
     public partial class Авторизация : Form
     {
+        DB db = new DB();
 
         public Авторизация()
         {
@@ -22,37 +15,37 @@ namespace ИС_ПОЗМС
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DB db = new DB();
-
-            if (TextLogin.Text != "" && TextPass.Text != "")
+            try
             {
-                string login = TextLogin.Text.Trim();
-                string pass = TextPass.Text.Trim();
-                string Sqlreq = "SELECT id FROM users WHERE fio = '" + login + "' AND password = ('" + pass + "');";
-
-                db.openConnection();
-
-                SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
-                int id = 0;
-
-                id = Convert.ToInt32(command.ExecuteScalar());
-
-
-
-                if (id != 0)
+                if (TextLogin.Text != "" && TextPass.Text != "")
                 {
-                    Главная главная = new Главная();
-                    db.closeConnection();
-                    главная.Show();
-                    this.Hide();
-                }
-                else { MessageBox.Show("Логин и/или пароль введены не правильно"); }
-            }
-        }
+                    string login = TextLogin.Text.Trim();
+                    string pass = TextPass.Text.Trim();
+                    string Sqlreq = "SELECT id FROM users WHERE fio = '" + login + "' AND password = ('" + pass + "');";
 
-        private void TextLogin_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
+                    db.openConnection();
+
+                    SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
+                    int id = 0;
+
+                    id = Convert.ToInt32(command.ExecuteScalar());
+
+
+
+                    if (id != 0)
+                    {
+                        Главная главная = new Главная { Owner = this };
+                        db.closeConnection();
+                        главная.Show();
+                        this.Hide();
+                    }
+                    else { MessageBox.Show("Логин и/или пароль введены не правильно"); }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

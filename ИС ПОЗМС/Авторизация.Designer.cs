@@ -77,12 +77,11 @@
             this.TextLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TextLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TextLogin.Location = new System.Drawing.Point(58, 83);
-            this.TextLogin.MaxLength = 20;
+            this.TextLogin.MaxLength = 50;
             this.TextLogin.Name = "TextLogin";
             this.TextLogin.Size = new System.Drawing.Size(324, 29);
             this.TextLogin.TabIndex = 11;
             this.TextLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TextLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextLogin_KeyPress);
             // 
             // label1
             // 
