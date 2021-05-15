@@ -54,15 +54,24 @@ namespace ИС_ПОЗМС
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             try
             {
-                string SqlReqAdd = $"insert into materials (articul, name, count, min_count, organization) values ('{textBox1.Text.Trim()}', '{textBox2.Text.Trim()}', '0', '{numericUpDown1.Value}', (select id from organizations where name = '{comboBox3.Text}'));";
+                if (textBox1.Text != "" && textBox2.Text != "" && comboBox3.Text != "" && numericUpDown1.Value > 0)
+                {
+                    string SqlReqAdd = $"insert into materials (articul, name, count, min_count, organization) values ('{textBox1.Text.Trim()}', '{textBox2.Text.Trim()}', '0', '{numericUpDown1.Value}', (select id from organizations where name = '{comboBox3.Text}'));";
 
-                SqlCommand command = new SqlCommand(SqlReqAdd, db.GetConnection());
-                command.ExecuteNonQuery();
+                    SqlCommand command = new SqlCommand(SqlReqAdd, db.GetConnection());
+                    command.ExecuteNonQuery();
 
-                this.Close();
-                db.closeConnection();
+                    Главная главная = (Главная)this.Owner;
+                    главная.Materials();
+
+                    this.Close();
+
+                    db.closeConnection();
+                }
+                else { MessageBox.Show("Не все поля заполнены, пожалуйста заполните все поля"); }
             }
             catch (Exception ex)
             {

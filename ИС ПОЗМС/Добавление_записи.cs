@@ -7,7 +7,7 @@ namespace ИС_ПОЗМС
     public partial class Добавление_записи : Form
     {
         DB db = new DB();
-
+        int diff = 0;
         public Добавление_записи()
         {
             InitializeComponent();
@@ -67,55 +67,72 @@ namespace ИС_ПОЗМС
         {
             try
             {
-                if (comboBox1.Text == "Пришло")
+                if ( comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "" && numericUpDown1.Value > 0)
                 {
-                    string SqlReqAdd = "insert into records " +
-                        "(materials, org_in, date_time, in_out_count, in_out) " +
-                        "values (" +
-                        "(SELECT id FROM materials where name = '" + comboBox2.Text + "'), " +
-                        "(SELECT id FROM organizations where name = '" + comboBox3.Text + "'), " +
-                        "GETDATE(), '" + numericUpDown1.Value + "', 'Пришло');";
+                    if (comboBox1.Text == "Пришло")
+                    {
+                        string SqlReqAdd = "insert into records " +
+                                                                "(materials, org_in, date_time, in_out_count, in_out) " +
+                                                                "values (" +
+                                                                "(SELECT id FROM materials where name = '" + comboBox2.Text + "'), " +
+                                                                "(SELECT id FROM organizations where name = '" + comboBox3.Text + "'), " +
+                                                                "GETDATE(), '" + numericUpDown1.Value + "', 'Пришло');";
 
-                    string SqlReqUpdate = $"UPDATE materials " +
-                        $"SET count = count + {numericUpDown1.Value} " +
-                        $"WHERE name = '{comboBox2.Text}' AND " +
-                        $"organization = (SELECT id FROM organizations where name = '{comboBox3.Text}');";
+                        diff = Convert.ToInt32(numericUpDown1.Value);
 
-                    SqlCommand command = new SqlCommand(SqlReqAdd, db.GetConnection());
-                    command.ExecuteNonQuery();
+                        string SqlReqUpdate = "UPDATE materials " +
+                                                               $"SET count = count + {diff} " +
+                                                               $"WHERE name = '{comboBox2.Text}' AND " +
+                                                               $"organization = (SELECT id FROM organizations where name = '{comboBox3.Text}');";
 
-                    SqlCommand command1 = new SqlCommand(SqlReqUpdate, db.GetConnection());
-                    command1.ExecuteNonQuery();
+                        SqlCommand command = new SqlCommand(SqlReqAdd, db.GetConnection());
+                        command.ExecuteNonQuery();
 
-                    this.Close();
+                        SqlCommand command1 = new SqlCommand(SqlReqUpdate, db.GetConnection());
+                        command1.ExecuteNonQuery();
+                    }
 
-                    db.closeConnection();
+                    if (comboBox1.Text == "Ушло")
+                    {
+                        diff = Convert.ToInt32(numericUpDown1.Value);
+
+                        int tmp = 0;
+                        string req = $"select count from materials where name = '{comboBox2.Text}'";
+                        SqlCommand command = new SqlCommand(req, db.GetConnection());
+                        tmp = Convert.ToInt32(command.ExecuteScalar());
+                        if (numericUpDown1.Value <= tmp )
+                        {
+                            string SqlReqAdd = "insert into records " +
+                                                                    "(materials, id_users, dep_to, date_time, in_out_count, in_out) " +
+                                                                    "values (" +
+                                                                    "(SELECT id FROM materials where name = '" + comboBox2.Text + "'), " +
+                                                                    "(SELECT id FROM users WHERE fio = '" + comboBox4.Text + "'), " +
+                                                                    "(SELECT id FROM departments where name = '" + comboBox3.Text + "'), " +
+                                                                    "GETDATE(), '" + numericUpDown1.Value + "', 'Ушло');";
+
+
+
+                            string SqlReqUpdate = "UPDATE materials " +
+                                                                   $"SET count -= {diff} " +
+                                                                   $"WHERE name = '{comboBox2.Text}' AND " +
+                                                                   $"organization = (SELECT id FROM departments where name = '{comboBox3.Text}');";
+
+                            SqlCommand command1 = new SqlCommand(SqlReqAdd, db.GetConnection());
+                            command1.ExecuteNonQuery();
+
+                            SqlCommand command2 = new SqlCommand(SqlReqUpdate, db.GetConnection());
+                            command2.ExecuteNonQuery();
+                        }         
+                        else { MessageBox.Show("Вы пытаетесь затребовать со склада больше, чем есть на данный момент!"); }
+                    }
                 }
+                else { MessageBox.Show("Не все поля заполнены, пожалуйста заполните все поля"); }
 
-                if (comboBox1.Text == "Ушло")
-                {
-                    string SqlReqAdd = "insert into records " +
-                        "(materials, id_users, dep_to, date_time, in_out_count, in_out) " +
-                        "values (" +
-                        "(SELECT id FROM materials where name = '" + comboBox2.Text + "'), " +
-                        "(SELECT id FROM users WHERE fio = '" + comboBox4.Text + "'), " +
-                        "(SELECT id FROM departments where name = '" + comboBox3.Text + "'), " +
-                        "GETDATE(), '" + numericUpDown1.Value + "', 'Ушло');";
-
-                    string SqlReqUpdate = $"UPDATE materials " +
-                        $"SET count = count - {numericUpDown1.Value} " +
-                        $"WHERE name = '{comboBox2.Text}' AND " +
-                        $"organization = (SELECT id FROM departments where name = '{comboBox3.Text}');";
-
-                    SqlCommand command = new SqlCommand(SqlReqAdd, db.GetConnection());
-                    command.ExecuteNonQuery();
-
-                    SqlCommand command1 = new SqlCommand(SqlReqUpdate, db.GetConnection());
-                    command1.ExecuteNonQuery();
-
-                    this.Close();
-                    db.closeConnection();
-                }
+                db.closeConnection();
+                Главная главная = (Главная)this.Owner;
+                главная.Records();
+                главная.Materials();
+                this.Close();
             }
             catch (Exception ex)
             {

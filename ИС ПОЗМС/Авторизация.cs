@@ -35,6 +35,8 @@ namespace ИС_ПОЗМС
                     if (id != 0)
                     {
                         Главная главная = new Главная { Owner = this };
+                        TextLogin.Text = "";
+                        TextPass.Text = "";
                         db.closeConnection();
                         главная.Show();
                         this.Hide();

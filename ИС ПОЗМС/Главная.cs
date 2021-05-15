@@ -135,7 +135,7 @@ namespace ИС_ПОЗМС
             }
         }
 
-        private void Records()
+        public void Records()
         {
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
@@ -146,7 +146,7 @@ namespace ИС_ПОЗМС
                 {
                     string Sqlreq3 = "SELECT r.id, m.name, o.name, r.date_time, r.in_out_count, r.in_out " +
                         "FROM records AS r, materials AS m, organizations AS o " +
-                        "WHERE r.materials = m.id AND r.org_in = o.id AND m.name LIKE '%" + textBox3.Text.Trim() + "%';";
+                        "WHERE r.materials = m.id AND r.org_in = o.id AND m.name LIKE '%" + textBox3.Text.Trim() + "%' ORDER BY r.id DESC;";
 
                     SqlCommand command = new SqlCommand(Sqlreq3, db.GetConnection());
 
@@ -275,14 +275,19 @@ namespace ИС_ПОЗМС
 
         private void btnUpdateRecord_Click(object sender, EventArgs e)
         {
-            Редактирование_записи редактирование = new Редактирование_записи();
-            редактирование.Owner = this;
-            редактирование.Show();
+            if (comboBox1.Text != "")
+            {
+                Редактирование_записи редактирование = new Редактирование_записи();
+                редактирование.Owner = this;
+                редактирование.Show();
+            }
+            else { MessageBox.Show("Пожалуйста укажите действие"); }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Добавление_материалов добавление_Материалов = new Добавление_материалов();
+            добавление_Материалов.Owner = this;
             добавление_Материалов.Show();
         }
 

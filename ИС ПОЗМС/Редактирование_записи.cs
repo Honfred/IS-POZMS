@@ -10,10 +10,10 @@ namespace ИС_ПОЗМС
         int diff = 0;
         public Редактирование_записи()
         {
-            InitializeComponent();
-
             try
             {
+                InitializeComponent();
+
                 db.openConnection();
 
                 Materials(); // Заполнения вариантами поля материалы
@@ -21,9 +21,9 @@ namespace ИС_ПОЗМС
 
                 numericUpDown1.Value = DataBank.Количество;
             }
-            catch (Exception ex)
+            catch (System.ArgumentOutOfRangeException)
             {
-                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Пожалуйста выберите запись");
             }
         }
 
@@ -97,10 +97,6 @@ namespace ИС_ПОЗМС
 
                     SqlCommand command1 = new SqlCommand(SqlReqUpdate, db.GetConnection());
                     command1.ExecuteNonQuery();
-
-                    this.Close();
-
-                    db.closeConnection();
                 }
 
                 if (comboBox1.Text == "Ушло")
@@ -115,19 +111,19 @@ namespace ИС_ПОЗМС
                     diff -= DataBank.Количество;
                     string SqlReqUpdate = $"UPDATE materials " +
                         $"SET count -= {diff} " +
-                        $"WHERE name = '{comboBox2.Text}' AND " +
-                        $"organization = (SELECT id FROM departments where name = '{comboBox3.Text}');";
+                        $"WHERE name = '{comboBox2.Text}';";
 
                     SqlCommand command = new SqlCommand(SqlReqAdd, db.GetConnection());
                     command.ExecuteNonQuery();
 
                     SqlCommand command1 = new SqlCommand(SqlReqUpdate, db.GetConnection());
                     command1.ExecuteNonQuery();
-
-                    this.Close();
-
-                    db.closeConnection();
                 }
+                db.closeConnection();
+                Главная главная = (Главная)this.Owner;
+                главная.Records();
+                главная.Materials();
+                this.Close();
             }
             catch (Exception ex)
             {

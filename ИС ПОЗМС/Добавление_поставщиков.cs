@@ -18,16 +18,20 @@ namespace ИС_ПОЗМС
 
             try
             {
-                db.openConnection();
+                if (textBox1.Text != "" && textBox2.Text != "")
+                {
+                    db.openConnection();
 
-                string MySqlreq = "INSERT INTO organizations (name, phone) VALUES ('" + textBox1.Text + "', '" + textBox2.Text + "');";
-                SqlCommand command = new SqlCommand(MySqlreq, db.GetConnection());
-                command.ExecuteNonQuery();
+                    string MySqlreq = "INSERT INTO organizations (name, phone) VALUES ('" + textBox1.Text + "', '" + textBox2.Text + "');";
+                    SqlCommand command = new SqlCommand(MySqlreq, db.GetConnection());
+                    command.ExecuteNonQuery();
 
-                главная.Organizations();
-                this.Hide();
+                    главная.Organizations();
+                    this.Hide();
 
-                db.closeConnection();
+                    db.closeConnection();
+                }
+                else { MessageBox.Show("Не все поля заполнены, пожалуйста заполните все поля"); }
             }
             catch (Exception ex)
             {
