@@ -4,10 +4,10 @@ using System.Windows.Forms;
 
 namespace ИС_ПОЗМС
 {
-    class DB
+    static class DB
     {
         SqlConnection connection = new SqlConnection("Data Source=LAPTOP-2J26AE8V; Initial Catalog=Склад; Integrated Security=True"); //MS SQL Server
-        public void openConnection()
+        static void openConnection()
         {
             try
             {
@@ -20,7 +20,7 @@ namespace ИС_ПОЗМС
             }
         }
 
-        public void closeConnection()
+        static void closeConnection()
         {
             try
             {
@@ -33,7 +33,7 @@ namespace ИС_ПОЗМС
             }
         }
 
-        public SqlConnection GetConnection()
+        static SqlConnection GetConnection()
         {
             return connection;
         }
