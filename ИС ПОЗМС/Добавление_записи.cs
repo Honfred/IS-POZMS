@@ -21,7 +21,7 @@ namespace ИС_ПОЗМС
         {
             try
             {
-                string Sqlreq = "SELECT name from materials";
+                string Sqlreq = "SELECT name FROM materials";
 
                 SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
                 SqlDataReader reader = command.ExecuteReader();
@@ -71,7 +71,7 @@ namespace ИС_ПОЗМС
                 {
                     if (comboBox1.Text == "Пришло")
                     {
-                        string SqlReqAdd = "insert into records " +
+                        string SqlReqAdd = "INSERT INTO records " +
                                                                 "(materials, org_in, date_time, in_out_count, in_out) " +
                                                                 "values (" +
                                                                 "(SELECT id FROM materials where name = '" + comboBox2.Text + "'), " +
@@ -83,7 +83,7 @@ namespace ИС_ПОЗМС
                         string SqlReqUpdate = "UPDATE materials " +
                                                                $"SET count = count + {diff} " +
                                                                $"WHERE name = '{comboBox2.Text}' AND " +
-                                                               $"organization = (SELECT id FROM organizations where name = '{comboBox3.Text}');";
+                                                               $"organization = (SELECT id FROM organizations WHERE name = '{comboBox3.Text}');";
 
                         SqlCommand command = new SqlCommand(SqlReqAdd, db.GetConnection());
                         command.ExecuteNonQuery();
@@ -97,17 +97,17 @@ namespace ИС_ПОЗМС
                         diff = Convert.ToInt32(numericUpDown1.Value);
 
                         int tmp = 0;
-                        string req = $"select count from materials where name = '{comboBox2.Text}'";
+                        string req = $"SELECT count FROM materials WHERE name = '{comboBox2.Text}'";
                         SqlCommand command = new SqlCommand(req, db.GetConnection());
                         tmp = Convert.ToInt32(command.ExecuteScalar());
                         if (numericUpDown1.Value <= tmp )
                         {
-                            string SqlReqAdd = "insert into records " +
+                            string SqlReqAdd = "INSERT INTO records " +
                                                                     "(materials, id_users, dep_to, date_time, in_out_count, in_out) " +
                                                                     "values (" +
-                                                                    "(SELECT id FROM materials where name = '" + comboBox2.Text + "'), " +
+                                                                    "(SELECT id FROM materials WHERE name = '" + comboBox2.Text + "'), " +
                                                                     "(SELECT id FROM users WHERE fio = '" + comboBox4.Text + "'), " +
-                                                                    "(SELECT id FROM departments where name = '" + comboBox3.Text + "'), " +
+                                                                    "(SELECT id FROM departments WHERE name = '" + comboBox3.Text + "'), " +
                                                                     "GETDATE(), '" + numericUpDown1.Value + "', 'Ушло');";
 
 
@@ -115,7 +115,7 @@ namespace ИС_ПОЗМС
                             string SqlReqUpdate = "UPDATE materials " +
                                                                    $"SET count -= {diff} " +
                                                                    $"WHERE name = '{comboBox2.Text}' AND " +
-                                                                   $"organization = (SELECT id FROM departments where name = '{comboBox3.Text}');";
+                                                                   $"organization = (SELECT id FROM departments WHERE name = '{comboBox3.Text}');";
 
                             SqlCommand command1 = new SqlCommand(SqlReqAdd, db.GetConnection());
                             command1.ExecuteNonQuery();

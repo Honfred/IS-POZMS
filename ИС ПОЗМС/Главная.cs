@@ -34,9 +34,10 @@ namespace ИС_ПОЗМС
         {
             try
             {
-                string Sqlreq = "SELECT m.articul, m.name, m.count, m.min_count, o.name " +
-                    "FROM materials AS m, organizations AS o " +
-                    "WHERE m.organization = o.id and m.name like '%" + textBox1.Text.Trim() + "%' or m.organization = o.id and m.articul like '%" + textBox1.Text.Trim() + "%';";
+                string Sqlreq = "SELECT materials.articul, materials.name, materials.count, materials.min_count, organizations.name " +
+                    "FROM materials " +
+                    "JOIN organizations ON materials.organization = organizations.id " +
+                    "WHERE materials.name like '%" + textBox1.Text.Trim() + "%' or materials.articul like '%" + textBox1.Text.Trim() + "%';";
 
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 DataTable table = new DataTable();
@@ -144,9 +145,12 @@ namespace ИС_ПОЗМС
             {
                 if (comboBox1.Text == "Пришло")
                 {
-                    string Sqlreq3 = "SELECT r.id, m.name, o.name, r.date_time, r.in_out_count, r.in_out " +
-                        "FROM records AS r, materials AS m, organizations AS o " +
-                        "WHERE r.materials = m.id AND r.org_in = o.id AND m.name LIKE '%" + textBox3.Text.Trim() + "%' ORDER BY r.id DESC;";
+                    string Sqlreq3 = "SELECT records.id, materials.name, organizations.name, records.date_time, records.in_out_count, records.in_out " +
+                        "FROM records" +
+                        "JOIN materials ON records.materials = materials.id" +
+                        "JOIN organizations ON records.org_in = organizations.id" +
+                        "WHERE m.name LIKE '%" + textBox3.Text.Trim() + "%' " +
+                        "ORDER BY r.id DESC;";
 
                     SqlCommand command = new SqlCommand(Sqlreq3, db.GetConnection());
 
@@ -165,9 +169,12 @@ namespace ИС_ПОЗМС
 
                 if (comboBox1.Text == "Ушло")
                 {
-                    string Sqlreq3 = "SELECT r.id, m.name, u.fio, d.code, r.date_time, r.in_out_count, r.in_out " +
-                        "FROM records AS r, materials AS m, departments AS d, users AS u " +
-                        "WHERE r.materials = m.id AND r.dep_to = d.id AND r.id_users = u.id AND m.name LIKE '%" + textBox3.Text.Trim() + "%';";
+                    string Sqlreq3 = "SELECT records.id, materials.name, users.fio, departments.code, records.date_time, records.in_out_count, records.in_out " +
+                        "FROM records, materials, departments, users" +
+                        "JOIN materials ON records.materials = materials.id" +
+                        "JOIN departments ON records.dep_to = departments.id" +
+                        "JOIN users ON records.id_users = users.id" +
+                        "WHERE m.name LIKE '%" + textBox3.Text.Trim() + "%';";
 
                     SqlCommand command = new SqlCommand(Sqlreq3, db.GetConnection());
 
@@ -195,7 +202,10 @@ namespace ИС_ПОЗМС
         {
             try
             {
-                string Sqlreq = "SELECT u.fio, d.name, u.post, u.phone FROM users AS u, departments AS d WHERE d.id = u.department AND u.fio LIKE '%" + textBox5.Text.Trim() + "%'  OR d.id = u.department AND d.name LIKE '%" + textBox5.Text.Trim() + "%';";
+                string Sqlreq = "SELECT users.fio, departments.name, users.post, users.phone " +
+                    "FROM users" +
+                    "JOIN departments ON users.department = departments.id" +
+                    "WHERE users.fio LIKE '%" + textBox5.Text.Trim() + "%'  OR departments.name LIKE '%" + textBox5.Text.Trim() + "%';";
 
                 SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
                 SqlDataAdapter adapter = new SqlDataAdapter();
@@ -231,9 +241,10 @@ namespace ИС_ПОЗМС
         {
             try
             {
-                string Sqlreq = "SELECT m.articul, m.name, m.count, m.min_count, o.name " +
-                    "FROM materials AS m, organizations AS o " +
-                    "WHERE m.organization = o.id and count < min_count;";
+                string Sqlreq = "SELECT materials.articul, materials.name, materials.count, materials.min_count, organizations.name " +
+                    "FROM materials" +
+                    "JOIN organizations ON materials.organization = organizations.id" +
+                    "WHERE count < min_count;";
 
                 SqlCommand command = new SqlCommand(Sqlreq, db.GetConnection());
                 SqlDataAdapter adapter = new SqlDataAdapter();
@@ -324,9 +335,11 @@ namespace ИС_ПОЗМС
                         int row, id;
                         row = dataGridView3.SelectedCells[0].RowIndex;
                         id = Convert.ToInt32(dataGridView3.Rows[row].Cells[0].Value.ToString());
-                        string query = $"SELECT r.id, m.name, o.name, r.date_time, r.in_out_count, r.in_out " +
-                            $"FROM records AS r, materials AS m, organizations AS o " +
-                            $"WHERE r.materials = m.id AND r.org_in = o.id AND r.id = '{id}'; ";
+                        string query = $"SELECT records.id, materials.name, organizations.name, records.date_time, records.in_out_count, records.in_out " +
+                            $"FROM records" +
+                            $"JOIN materials ON records.materials = materials.id" +
+                            $"JOIN organizations ON records.org_in = organizations.id" +
+                            $"records.id = '{id}'; ";
                         SqlCommand command = new SqlCommand(query, db.GetConnection());
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())
@@ -348,9 +361,12 @@ namespace ИС_ПОЗМС
                         int row, id;
                         row = dataGridView3.SelectedCells[0].RowIndex;
                         id = Convert.ToInt32(dataGridView3.Rows[row].Cells[0].Value.ToString());
-                        string query = $"SELECT r.id, m.name, u.fio, d.name, r.date_time, r.in_out_count, r.in_out " +
-                            $"FROM records AS r, materials AS m, departments AS d, users AS u " +
-                            $"WHERE r.materials = m.id AND r.dep_to = d.id AND r.id_users = u.id AND r.id = '{id}'; ";
+                        string query = $"SELECT records.id, materials.name, users.fio, departments.name, records.date_time, records.in_out_count, records.in_out " +
+                            $"FROM records" +
+                            $"JOIN materials ON records.materials = materials.id" +
+                            $"JOIN departments ON records.dep_to = departments.id" +
+                            $"JOIN users ON records.id_users = users.id" +
+                            $"WHERE r.id = '{id}'; ";
                         SqlCommand command = new SqlCommand(query, db.GetConnection());
                         SqlDataReader reader = command.ExecuteReader();
                         while (reader.Read())

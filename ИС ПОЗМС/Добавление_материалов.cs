@@ -59,7 +59,13 @@ namespace ИС_ПОЗМС
             {
                 if (textBox1.Text != "" && textBox2.Text != "" && comboBox3.Text != "" && numericUpDown1.Value > 0)
                 {
-                    string SqlReqAdd = $"insert into materials (articul, name, count, min_count, organization) values ('{textBox1.Text.Trim()}', '{textBox2.Text.Trim()}', '0', '{numericUpDown1.Value}', (select id from organizations where name = '{comboBox3.Text}'));";
+                    string SqlReqAdd = "INSERT INTO materials " +
+                                                              "(articul, name, count, min_count, organization) " +
+                                                             $"VALUES ('{textBox1.Text.Trim()}', " +
+                                                             $"'{textBox2.Text.Trim()}', " +
+                                                              "'0', " +
+                                                             $"'{numericUpDown1.Value}', " +
+                                                             $"(SELECT id FROM organizations WHERE name = '{comboBox3.Text}'));";
 
                     SqlCommand command = new SqlCommand(SqlReqAdd, db.GetConnection());
                     command.ExecuteNonQuery();
